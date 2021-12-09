@@ -1,14 +1,13 @@
 FROM python:3.9
 
-COPY . .
+ENV FLASK_APP run.py
 
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+RUN mkdir -p temp
+RUN mkdir -p logs
+COPY run.py gunicorn-cfg.py requirements.txt config.py .env ./
+COPY app app
 
-# install python dependencies
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
-
-# gunicorn
-CMD ["gunicorn", "--config", "gunicorn-cfg.py", "run:app"]
+RUN pip install -r requirements.txt
+#python -m pip install --upgrade pip'
+EXPOSE 5005
+#CMD ["gunicorn", "--config", "gunicorn-cfg.py", "run:app"]
