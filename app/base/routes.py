@@ -9,19 +9,14 @@ import os
 # Flask modules
 from flask import render_template, request, url_for, redirect, send_from_directory
 from flask_login import (
-    current_user,
-    login_required,
     login_user,
     logout_user
 )
-from jinja2 import TemplateNotFound
 
 from app.base import blueprint
 # provide login manager with load_user callback
 from app.base.forms import RegisterForm, LoginForm
 from app.model.models import Users
-
-
 # Logout user
 from app.util.util import verify_pass, hash_pass
 

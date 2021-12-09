@@ -6,8 +6,8 @@ import getMainAxisFromPlacement from "../utils/getMainAxisFromPlacement.js";
 import within from "../utils/within.js";
 import mergePaddingObject from "../utils/mergePaddingObject.js";
 import expandToHashMap from "../utils/expandToHashMap.js";
-import { left, right, basePlacements, top, bottom } from "../enums.js";
-import { isHTMLElement } from "../dom-utils/instanceOf.js"; // eslint-disable-next-line import/no-unused-modules
+import {basePlacements, bottom, left, right, top} from "../enums.js";
+import {isHTMLElement} from "../dom-utils/instanceOf.js"; // eslint-disable-next-line import/no-unused-modules
 
 var toPaddingObject = function toPaddingObject(padding, state) {
   padding = typeof padding === 'function' ? padding(Object.assign({}, state.rects, {

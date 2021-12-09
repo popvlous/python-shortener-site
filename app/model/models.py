@@ -3,9 +3,11 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
-from app import db, login_manager
 from flask_login import UserMixin
 from sqlalchemy.exc import InvalidRequestError
+
+from app import db, login_manager
+
 
 class Users(db.Model, UserMixin):
 

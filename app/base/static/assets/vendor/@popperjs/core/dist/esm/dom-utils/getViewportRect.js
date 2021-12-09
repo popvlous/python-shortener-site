@@ -1,6 +1,7 @@
 import getWindow from "./getWindow.js";
 import getDocumentElement from "./getDocumentElement.js";
 import getWindowScrollBarX from "./getWindowScrollBarX.js";
+
 export default function getViewportRect(element) {
   var win = getWindow(element);
   var html = getDocumentElement(element);

@@ -1,4 +1,5 @@
 import getComputedStyle from "./getComputedStyle.js";
+
 export default function isScrollParent(element) {
   // Firefox wants us to check `-x` and `-y` variations as well
   var _getComputedStyle = getComputedStyle(element),

@@ -10,8 +10,9 @@ import uniqueBy from "./utils/uniqueBy.js";
 import getBasePlacement from "./utils/getBasePlacement.js";
 import mergeByName from "./utils/mergeByName.js";
 import detectOverflow from "./utils/detectOverflow.js";
-import { isElement } from "./dom-utils/instanceOf.js";
-import { auto } from "./enums.js";
+import {isElement} from "./dom-utils/instanceOf.js";
+import {auto} from "./enums.js";
+
 var INVALID_ELEMENT_ERROR = 'Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.';
 var INFINITE_LOOP_ERROR = 'Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.';
 var DEFAULT_OPTIONS = {

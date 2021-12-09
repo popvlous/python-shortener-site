@@ -1,5 +1,6 @@
 import format from "./format.js";
-import { modifierPhases } from "../enums.js";
+import {modifierPhases} from "../enums.js";
+
 var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
 var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
 var VALID_PROPERTIES = ['name', 'enabled', 'phase', 'fn', 'effect', 'requires', 'options'];

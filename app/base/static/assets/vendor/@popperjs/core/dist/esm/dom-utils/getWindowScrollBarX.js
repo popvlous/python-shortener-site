@@ -1,6 +1,7 @@
 import getBoundingClientRect from "./getBoundingClientRect.js";
 import getDocumentElement from "./getDocumentElement.js";
 import getWindowScroll from "./getWindowScroll.js";
+
 export default function getWindowScrollBarX(element) {
   // If <html> has a CSS width greater than the viewport, then this will be
   // incorrect for RTL.

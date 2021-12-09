@@ -3,7 +3,7 @@ import getBasePlacement from "../utils/getBasePlacement.js";
 import getOppositeVariationPlacement from "../utils/getOppositeVariationPlacement.js";
 import detectOverflow from "../utils/detectOverflow.js";
 import computeAutoPlacement from "../utils/computeAutoPlacement.js";
-import { bottom, top, start, right, left, auto } from "../enums.js";
+import {auto, bottom, left, right, start, top} from "../enums.js";
 import getVariation from "../utils/getVariation.js"; // eslint-disable-next-line import/no-unused-modules
 
 function getExpandedFallbackPlacements(placement) {

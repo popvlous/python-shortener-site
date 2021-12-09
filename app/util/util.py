@@ -6,9 +6,6 @@ import binascii
 import hashlib
 import os
 
-from flask    import json
-
-from app import db
 
 def hash_pass( password ):
     """Hash a password for storing."""

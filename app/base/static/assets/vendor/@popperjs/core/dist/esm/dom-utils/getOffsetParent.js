@@ -1,7 +1,7 @@
 import getWindow from "./getWindow.js";
 import getNodeName from "./getNodeName.js";
 import getComputedStyle from "./getComputedStyle.js";
-import { isHTMLElement } from "./instanceOf.js";
+import {isHTMLElement} from "./instanceOf.js";
 import isTableElement from "./isTableElement.js";
 import getParentNode from "./getParentNode.js";
 

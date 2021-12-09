@@ -4,9 +4,8 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 from flask_wtf          import FlaskForm
-from flask_wtf.file     import FileField, FileRequired
-from wtforms            import StringField, TextAreaField, SubmitField, PasswordField
-from wtforms.validators import InputRequired, Email, DataRequired
+from wtforms            import StringField, PasswordField
+from wtforms.validators import Email, DataRequired
 
 class LoginForm(FlaskForm):
 	username    = StringField  (u'Username'  , validators=[DataRequired()])

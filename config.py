@@ -4,7 +4,9 @@ Copyright (c) 2019 - present AppSeed.us
 """
 
 import os
+
 import pymysql
+
 pymysql.install_as_MySQLdb()
 from decouple import config
 

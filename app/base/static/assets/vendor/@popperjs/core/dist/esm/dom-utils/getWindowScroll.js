@@ -1,4 +1,5 @@
 import getWindow from "./getWindow.js";
+
 export default function getWindowScroll(node) {
   var win = getWindow(node);
   var scrollLeft = win.pageXOffset;

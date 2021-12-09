@@ -2,7 +2,7 @@ import getDocumentElement from "./getDocumentElement.js";
 import getComputedStyle from "./getComputedStyle.js";
 import getWindowScrollBarX from "./getWindowScrollBarX.js";
 import getWindowScroll from "./getWindowScroll.js";
-import { max } from "../utils/math.js"; // Gets the entire size of the scrollable document area, even extending outside
+import {max} from "../utils/math.js"; // Gets the entire size of the scrollable document area, even extending outside
 // of the `<html>` and `<body>` rect bounds if horizontally scrollable
 
 export default function getDocumentRect(element) {

@@ -1,5 +1,6 @@
 import getBasePlacement from "../utils/getBasePlacement.js";
-import { top, left, right, placements } from "../enums.js";
+import {left, placements, right, top} from "../enums.js";
+
 export function distanceAndSkiddingToXY(placement, rects, offset) {
   var basePlacement = getBasePlacement(placement);
   var invertDistance = [left, top].indexOf(basePlacement) >= 0 ? -1 : 1;

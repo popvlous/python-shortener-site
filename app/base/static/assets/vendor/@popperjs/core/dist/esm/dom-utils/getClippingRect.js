@@ -1,17 +1,17 @@
-import { viewport } from "../enums.js";
+import {viewport} from "../enums.js";
 import getViewportRect from "./getViewportRect.js";
 import getDocumentRect from "./getDocumentRect.js";
 import listScrollParents from "./listScrollParents.js";
 import getOffsetParent from "./getOffsetParent.js";
 import getDocumentElement from "./getDocumentElement.js";
 import getComputedStyle from "./getComputedStyle.js";
-import { isElement, isHTMLElement } from "./instanceOf.js";
+import {isElement, isHTMLElement} from "./instanceOf.js";
 import getBoundingClientRect from "./getBoundingClientRect.js";
 import getParentNode from "./getParentNode.js";
 import contains from "./contains.js";
 import getNodeName from "./getNodeName.js";
 import rectToClientRect from "../utils/rectToClientRect.js";
-import { max, min } from "../utils/math.js";
+import {max, min} from "../utils/math.js";
 
 function getInnerBoundingClientRect(element) {
   var rect = getBoundingClientRect(element);
