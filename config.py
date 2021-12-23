@@ -17,6 +17,15 @@ class Config(object):
     # Set up the App SECRET_KEY
     SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_007')
 
+    MONGODB_SETTINGS = {
+        'db': 'ams',
+        'username': 'popvlous',
+        'password': 'Foxconn88',
+        'connect': True,
+        'host': 'mongodb+srv://ams.0tqak.mongodb.net/ams',
+        'authentication_source': 'ams'
+    }
+
     # This will create a file in <app> FOLDER
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
         config( 'DB_ENGINE'   , default='mysql'    ),
@@ -50,6 +59,15 @@ class ProductionConfig(Config):
     SESSION_COOKIE_HTTPONLY  = True
     REMEMBER_COOKIE_HTTPONLY = True
     REMEMBER_COOKIE_DURATION = 3600
+
+    MONGODB_SETTINGS = {
+        'db': 'agora',
+        'username': 'agora',
+        'password': 'AGo#2021#zKy',
+        'connect': True,
+        'host': 'mongodb://192.168.100.11:15017,192.168.100.12:15017,192.168.100.13:15017/agora',
+        'authentication_source': 'agora'
+    }
 
     # PostgreSQL database
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
