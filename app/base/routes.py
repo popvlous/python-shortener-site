@@ -7,8 +7,6 @@ Copyright (c) 2019 - present AppSeed.us
 import os
 
 # Flask modules
-from datetime import datetime
-
 from flask import render_template, request, url_for, redirect, send_from_directory
 from flask_login import (
     login_user,
@@ -55,27 +53,20 @@ def register():
         email = request.form.get('email', '', type=str)
 
         # filter User out of database through username
-        user = Users.objects(username=username).first()
+        user = Users.query.filter_by(user=username).first()
 
         # filter User out of database through username
-        user_by_email = Users.objects(email=email).first()
+        user_by_email = Users.query.filter_by(email=email).first()
 
         if user or user_by_email:
             msg = 'Error: User exists!'
 
         else:
 
-            user = Users(**request.form, BaseCreateTime=datetime.now(), BaseCreatorId=0,
-                        BaseModifyTime=datetime.now(), BaseVersion=1, BaseIsDelete=0, Salt='', RealName='',
-                        DepartmentId=0,
-                        Gender=0, Birthday='', Portrait='', Mobile='', LoginCount=0, UserStatus=0, IsSystem=0,
-                        IsOnline=0,
-                        Remark='', WebToken='', ApiToken='')
-            user.confirm = 0
+            pw_hash = hash_pass(password)
 
-            pw_hash = hash_pass(user.password)
-            re_pwd = pw_hash.decode("utf-8").replace("'", '"')
-            user.password = re_pwd
+            user = Users(username, email, pw_hash)
+
             user.save()
 
             msg = 'User created, please <a href="' + url_for('base.login') + '">login</a>'
@@ -104,7 +95,7 @@ def login():
         password = request.form.get('password', '', type=str)
 
         # filter User out of database through username
-        user = Users.objects(username=username).first()
+        user = Users.query.filter_by(user=username).first()
 
         if user:
 

@@ -9,14 +9,13 @@ from logging.handlers import TimedRotatingFileHandler
 from flask import Flask
 from flask_login import LoginManager
 # from flask_moment import Moment
-from flask_mongoengine import MongoEngine
 from flask_sqlalchemy import SQLAlchemy
 
-db = MongoEngine()
-
+db = SQLAlchemy()
 login_manager: LoginManager = LoginManager()
 
 def register_extensions(app):
+    db.init_app(app)
     login_manager.init_app(app)
 
 def register_blueprints(app):
@@ -28,11 +27,11 @@ def configure_database(app):
 
     @app.before_first_request
     def initialize_database():
-        db.init_app(app)
+        db.create_all()
 
     @app.teardown_request
     def shutdown_session(exception=None):
-        db.connection.disconnect
+        db.session.remove()
 
 def create_app(config):
     app = Flask(__name__, static_folder='base/static')
