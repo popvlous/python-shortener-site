@@ -1,0 +1,49 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: agora-ite
+  namespace: ${namespace}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: 'true'
+    nginx.ingress.kubernetes.io/cors-allow-origin: '*'
+    nginx.ingress.kubernetes.io/enable-cors: 'true'
+    nginx.ingress.kubernetes.io/cors-allow-headers: "If-None-Match"
+spec:
+  tls:
+  - hosts:
+    - ${STAG_URL}
+    secretName: ${STAG_TLS}
+  rules:
+  - host: ${STAG_URL}
+    http:
+      paths:
+        - path: /postfix
+          pathType: Prefix
+          backend:
+            service:
+              name: agora-stag
+              port:
+                number: 80
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: nginx-stag
+              port:
+                number: 80
+        - path: /image-compare
+          pathType: Prefix
+          backend:
+            service:
+              name: ice-ite
+              port:
+                number: 80
+        - path: /backend
+          pathType: Prefix
+          backend:
+            service:
+              name: backend-ite
+              port:
+                number: 80
