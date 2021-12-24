@@ -1,18 +1,18 @@
 //COLOR SETTING
 
-$white:         #F7F7F7;
-$black:         #293241;
-$gray:          #D2D7DF;
-$red:           #772014;
-$org:           #EE6644;
-$yellow:        #D7CF07;
-$green:         #17A398;
-$blue:					#3F84E5;
+$white:   	      #F7F7F7;
+$black:						#293241;
+$gray:						#D2D7DF;
+$red:							#772014;
+$org:							#EE6644;
+$yellow:					#D7CF07;
+$green:						#17A398;
+$blue:						#3F84E5;
 
-$main:						$org;
-$secondary:				$yellow;
-$text:						$black;
-$bg:							$white;
+$main:							$org;
+$secondary:					$yellow;
+$text:							$black;
+$bg:								$white;
 
 $menu_color:			#2f373d;
 $icon_color:			#ff7e5f;
@@ -25,7 +25,80 @@ $margin:						5rem;
 $padding:						3rem;
 $textSize:					1rem;
 $radius:						.75rem;
+$btnShadow:					inset 5px 5px 8px rgba($white, .13), 0 13px 26px -13px lighten($main, 8%);
+$btnShadow-hover:		0 13px 13px -13px rgba($main, .56);
+$boxShadow:					-5px -5px 13px white, 3px 3px 26px -8px rgba($text, .18);
+$boxShadow2:				-5px -5px 13px $white, 3px 3px 26px -8px rgba($text, .26);
+$inputShadow:				inset -5px -5px 13px white, inset 5px 5px 13px -8px rgba($text, .23);
 $letterSpacing:			.25rem;
 $textShadow:				0 0 13px rgba($text, .56);       
 $textShadow_main:		0 5px 8px rgba(darken($main, 18%), .56);       
 $transition:				all	.4s ease-in-out;
+
+
+
+//EXTEND SETTING
+
+%span {clip-path: inset(-10% -10% -10% -10%);}
+
+%hoverSpan {
+	animation: hover1 .25s linear 0s 1 both,
+						 hover2 1.2s cubic-bezier(.215,.61,.355,1) .25s 1 forwards;
+}
+
+%box {
+	margin-bottom: $padding;
+	padding: $padding;
+	border-radius: $radius * 2;
+}
+
+%box1 {
+	background: $white;
+	box-shadow: $boxShadow;
+}
+
+%box2 {
+	background: darken($white, 3%);
+	box-shadow: $boxShadow2;
+}
+
+%input {
+	background: transparent;
+	border: 0;
+	border-radius: $letterSpacing * 2;
+	box-shadow: $inputShadow;
+	font-size: $radius;
+	
+	&::placeholder {color: rgba($text, .26);}
+}
+
+%btnPrimary {
+	margin-top: $padding / 2;
+	background: $main;
+	border: $main;
+	border-radius: $padding;
+	padding: $radius $padding;
+	color: $white;
+	transition: $transition;
+	box-shadow: $btnShadow;
+
+	&:hover{
+		background: darken($main, 3%);
+		color: $secondary;
+		box-shadow: $btnShadow-hover;
+	}
+}
+
+%btnPrimary-line {
+		display: inline-block;
+		border: 2px solid rgba($main, .56);
+		background: transparent;
+		padding: $radius $padding;
+		border-radius: $padding;
+		color: $text;
+		transition: $transition;
+		font-size: $textSize;
+		cursor: pointer;
+
+		&:hover{color: $secondary;}
+}

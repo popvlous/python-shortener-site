@@ -1,4 +1,99 @@
 @charset "UTF-8";
+a span, button span {
+  -webkit-clip-path: inset(-10% -10% -10% -10%);
+          clip-path: inset(-10% -10% -10% -10%);
+}
+
+a:hover span, button:hover span {
+  -webkit-animation: hover1 0.25s linear 0s 1 both, hover2 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.25s 1 forwards;
+          animation: hover1 0.25s linear 0s 1 both, hover2 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.25s 1 forwards;
+}
+
+.pricing .box, .contact .info-box, .contact .php-email-form {
+  margin-bottom: 3rem;
+  padding: 3rem;
+  border-radius: 1.5rem;
+}
+
+.contact .info-box, .contact .php-email-form {
+  background: #F7F7F7;
+  -webkit-box-shadow: -5px -5px 13px white, 3px 3px 26px -8px rgba(41, 50, 65, 0.18);
+          box-shadow: -5px -5px 13px white, 3px 3px 26px -8px rgba(41, 50, 65, 0.18);
+}
+
+.pricing .box {
+  background: #efefef;
+  -webkit-box-shadow: -5px -5px 13px #F7F7F7, 3px 3px 26px -8px rgba(41, 50, 65, 0.26);
+          box-shadow: -5px -5px 13px #F7F7F7, 3px 3px 26px -8px rgba(41, 50, 65, 0.26);
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  background: transparent;
+  border: 0;
+  border-radius: 0.5rem;
+  -webkit-box-shadow: inset -5px -5px 13px white, inset 5px 5px 13px -8px rgba(41, 50, 65, 0.23);
+          box-shadow: inset -5px -5px 13px white, inset 5px 5px 13px -8px rgba(41, 50, 65, 0.23);
+  font-size: 0.75rem;
+}
+
+.contact .php-email-form input::-webkit-input-placeholder,
+.contact .php-email-form textarea::-webkit-input-placeholder {
+  color: rgba(41, 50, 65, 0.26);
+}
+
+.contact .php-email-form input:-ms-input-placeholder,
+.contact .php-email-form textarea:-ms-input-placeholder {
+  color: rgba(41, 50, 65, 0.26);
+}
+
+.contact .php-email-form input::-ms-input-placeholder,
+.contact .php-email-form textarea::-ms-input-placeholder {
+  color: rgba(41, 50, 65, 0.26);
+}
+
+.contact .php-email-form input::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: rgba(41, 50, 65, 0.26);
+}
+
+.pricing .featured .get-started-btn, .contact .php-email-form button[type="submit"] {
+  margin-top: 1.5rem;
+  background: #EE6644;
+  border: #EE6644;
+  border-radius: 3rem;
+  padding: 0.75rem 3rem;
+  color: #F7F7F7;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  -webkit-box-shadow: inset 5px 5px 8px rgba(247, 247, 247, 0.13), 0 13px 26px -13px #f18569;
+          box-shadow: inset 5px 5px 8px rgba(247, 247, 247, 0.13), 0 13px 26px -13px #f18569;
+}
+
+.pricing .featured .get-started-btn:hover, .contact .php-email-form button:hover[type="submit"] {
+  background: #ed5b36;
+  color: #D7CF07;
+  -webkit-box-shadow: 0 13px 13px -13px rgba(238, 102, 68, 0.56);
+          box-shadow: 0 13px 13px -13px rgba(238, 102, 68, 0.56);
+}
+
+.pricing .get-started-btn {
+  display: inline-block;
+  border: 2px solid rgba(238, 102, 68, 0.56);
+  background: transparent;
+  padding: 0.75rem 3rem;
+  border-radius: 3rem;
+  color: #293241;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.pricing .get-started-btn:hover {
+  color: #D7CF07;
+}
+
 /******** vender/sass/mixins/_image.scss ********/
 .img-fluid {
   width: 100%;
@@ -79,22 +174,12 @@ a {
   text-decoration: none;
 }
 
-a span {
-  -webkit-clip-path: inset(-10% -10% -10% -10%);
-          clip-path: inset(-10% -10% -10% -10%);
-}
-
 a:hover, a:active {
   text-decoration: none;
 }
 
 a:hover {
   color: #D7CF07;
-}
-
-a:hover span {
-  -webkit-animation: hover1 0.25s linear 0s 1 both, hover2 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.25s 1 forwards;
-          animation: hover1 0.25s linear 0s 1 both, hover2 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.25s 1 forwards;
 }
 
 h1,
@@ -214,7 +299,7 @@ h6,
 # Header
 --------------------------------------------------------------*/
 #header {
-  height: 4.5rem;
+  height: 5rem;
   -webkit-transition: all 0.4s ease-in-out;
   transition: all 0.4s ease-in-out;
   z-index: 997;
@@ -721,6 +806,10 @@ section {
   padding: 5rem 0;
 }
 
+.section {
+  height: calc(100vh - $margin*2);
+}
+
 .section-bg {
   background: #efefef;
 }
@@ -737,7 +826,6 @@ section {
 
 .section-title h2 {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
   padding-bottom: 1.5rem;
   position: relative;
 }
@@ -755,7 +843,7 @@ section {
 }
 
 .breadcrumbs h2 {
-  font-size: 5rem;
+  font-size: 2.5rem;
 }
 
 .breadcrumbs ol {
@@ -1098,12 +1186,15 @@ section {
 }
 
 .pricing .box {
-  padding: 3rem;
-  margin-bottom: 5rem;
-  -webkit-box-shadow: 0px 0px 30px rgba(41, 50, 65, 0.15);
-          box-shadow: 0px 0px 30px rgba(41, 50, 65, 0.15);
-  background: #F7F7F7;
   text-align: center;
+}
+
+.pricing .box.left {
+  border-radius: 1.5rem 0 0 1.5rem;
+}
+
+.pricing .box.right {
+  border-radius: 0 1.5rem 1.5rem 0;
 }
 
 .pricing h3 {
@@ -1120,6 +1211,7 @@ section {
 
 .pricing h4 span {
   display: block;
+  margin-top: 0.75rem;
   color: #D2D7DF;
   font-size: 1rem;
 }
@@ -1155,35 +1247,9 @@ section {
   text-decoration: line-through;
 }
 
-.pricing .get-started-btn {
-  display: inline-block;
-  border: 2px solid #EE6644;
-  background: transparent;
-  padding: 0.75rem 3rem;
-  border-radius: 3rem;
-  color: #293241;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-.pricing .get-started-btn:hover {
-  color: #D7CF07;
-}
-
 .pricing .featured {
   z-index: 10;
   margin: -3rem auto 0 auto;
-}
-
-.pricing .featured .get-started-btn {
-  background: #EE6644;
-  color: #F7F7F7;
-}
-
-.pricing .featured .get-started-btn:hover {
-  color: #D7CF07;
 }
 
 @media (max-width: 992px) {
@@ -1212,7 +1278,6 @@ section {
 --------------------------------------------------------------*/
 .team {
   background: #fff;
-  padding-bottom: 30px;
 }
 
 .team .member {
@@ -1303,24 +1368,28 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact {
-  padding-bottom: 30px;
+  padding-top: 1.5rem;
 }
 
 .contact .info-box {
   color: #293241;
   text-align: center;
-  -webkit-box-shadow: 0 0 30px 0 0 13px rgba(41, 50, 65, 0.56);
-          box-shadow: 0 0 30px 0 0 13px rgba(41, 50, 65, 0.56);
-  padding: 20px 0 30px 0;
-  margin-bottom: 30px;
+  padding: 3rem 0;
 }
 
 .contact .info-box i {
-  font-size: 32px;
+  font-size: 3rem;
   color: #EE6644;
   border-radius: 50%;
-  padding: 8px;
+  padding: 0.75rem;
   border: 2px dotted #EE6644;
+}
+
+.contact .info-box h3 {
+  font-size: 1.5rem;
+  color: #293241;
+  font-weight: 700;
+  margin: 10px 0;
 }
 
 .contact .info-box h3 {
@@ -1335,13 +1404,6 @@ section {
   line-height: 24px;
   font-size: 14px;
   margin-bottom: 0;
-}
-
-.contact .php-email-form {
-  -webkit-box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-          box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
-  padding: 30px;
-  margin-bottom: 30px;
 }
 
 .contact .php-email-form .error-message {
@@ -1388,15 +1450,13 @@ section {
 
 .contact .php-email-form input,
 .contact .php-email-form textarea {
-  border-radius: 0;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .contact .php-email-form input::focus,
 .contact .php-email-form textarea::focus {
-  background-color: #68a4c4;
+  background: #293241;
+  color: #F7F7F7;
 }
 
 .contact .php-email-form input {
@@ -1405,21 +1465,6 @@ section {
 
 .contact .php-email-form textarea {
   padding: 12px 15px;
-}
-
-.contact .php-email-form button[type="submit"] {
-  background: #EE6644;
-  border: 0;
-  padding: 10px 24px;
-  color: #F7F7F7;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
-  -webkit-box-shadow: 0 5px 13px -8px rgba(238, 102, 68, 0.56);
-          box-shadow: 0 5px 13px -8px rgba(238, 102, 68, 0.56);
-}
-
-.contact .php-email-form button[type="submit"]:hover {
-  background: #8dbad2;
 }
 
 @-webkit-keyframes animate-loading {
@@ -1462,7 +1507,7 @@ section {
 --------------------------------------------------------------*/
 #footer {
   background: #293241;
-  padding: 3rem 0 1rem 0;
+  padding: 3rem 0 2rem 0;
   color: rgba(247, 247, 247, 0.85);
   font-size: 0.85rem;
   font-weight: 100;
