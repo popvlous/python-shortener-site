@@ -8,7 +8,7 @@ from flask import Blueprint
 blueprint = Blueprint(
     'base',
     __name__,
-    url_prefix='',
+    url_prefix='/portal',
     template_folder='templates',
     static_folder='static'
 )
