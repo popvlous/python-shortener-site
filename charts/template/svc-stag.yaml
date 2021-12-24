@@ -1,0 +1,53 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ${image}-ite
+  namespace: ${namespace}
+spec:
+#  type: LoadBalancer
+  selector:
+    app: ${image}-ite
+  ports:
+  - port: 80
+    targetPort: ${PORTS}
+    protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ${image}-ite
+  namespace: ${namespace}
+spec:
+  replicas: ${replicas}
+  strategy: #從這裡是 Rolling Update 的設定(為了服務不中斷)
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1           #表示升級過程最多會有 1+${replicas} 個 Pod
+      maxUnavailable: 1     #最多允許一個 Pod 不能服務
+  minReadySeconds: 5        #容器啟動後 5 秒再開始進行升級
+  selector:
+    matchLabels:
+      app: ${image}-ite
+  template:
+    metadata:
+      labels:
+        app: ${image}-ite
+    spec:
+      containers:
+      - name: ${image}
+        image: ${DOCKER_ROOT}/${DEVSTAG}/${image}:${tag}
+        imagePullPolicy: IfNotPresent
+        command: ["/bin/sh"]
+        args: ["-c", "gunicorn --config gunicorn-cfg.py run:app"]
+        ports:
+        - containerPort: ${PORTS}
+        env:
+        - name: TZ
+          value: Asia/Taipei
+        - name: FLASK_ENV
+          value: ite
+        - name: FLASK_DEBUG
+          value: "1"
+      imagePullSecrets:
+      - name: regcred

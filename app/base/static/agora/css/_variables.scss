@@ -1,0 +1,31 @@
+//COLOR SETTING
+
+$white:         #F7F7F7;
+$black:         #293241;
+$gray:          #D2D7DF;
+$red:           #772014;
+$org:           #EE6644;
+$yellow:        #D7CF07;
+$green:         #17A398;
+$blue:					#3F84E5;
+
+$main:						$org;
+$secondary:				$yellow;
+$text:						$black;
+$bg:							$white;
+
+$menu_color:			#2f373d;
+$icon_color:			#ff7e5f;
+
+
+
+//DEFUALT SETTING
+
+$margin:						5rem;
+$padding:						3rem;
+$textSize:					1rem;
+$radius:						.75rem;
+$letterSpacing:			.25rem;
+$textShadow:				0 0 13px rgba($text, .56);       
+$textShadow_main:		0 5px 8px rgba(darken($main, 18%), .56);       
+$transition:				all	.4s ease-in-out;
