@@ -76,7 +76,7 @@ def upload():
             message = "圖片驗證失敗 原因:" + result_json['error']
             status_code = result_json['status']
             current_app.logger.error(f' 圖片驗證失敗 { message } status: {status_code}  ')
-            return render_template('page-500.html', message=message), int(status_code)
+            return render_template('mail/mail500.html', message=message, mail_id=mail_id)
         else:
             current_app.logger.info(f' 加密郵件id {mail_id} 驗證成功  ')
         #顯示解密結果
@@ -91,11 +91,11 @@ def upload():
             else:
                 message = "圖片驗證失敗,失敗原因：" + str(result_json['message']) + " code: " + str(result_json['code'])
                 current_app.logger.error(f' 圖片驗證失敗 {message} ')
-                return render_template('page-500.html', message=message), 500
+                return render_template('mail/mail500.html', message=message, mail_id=mail_id)
         else:
             message = "圖片驗證失敗"
             current_app.logger.error(f' 圖片驗證失敗 {message} ')
-            return render_template('page-500.html', message=message), 500
+            return render_template('mail/mail500.html', message=message, mail_id=mail_id)
     else:
         mail_id = request.args.get('id')
         if not os.path.isdir('app/base/static/temp/' + mail_id):
@@ -105,7 +105,7 @@ def upload():
             os.mkdir('app/base/static/temp/' + mail_id)
         if not mail_id:
             message = "URL遺失id參數"
-            return render_template('page-500.html', message=message), 500
+            return render_template('mail/mail500.html', message=message, mail_id=mail_id)
 
         # 利用重導向切換語言
         current_language = request.accept_languages.best
@@ -113,7 +113,7 @@ def upload():
         return redirect(request.host_url + "portal/" + current_language +"/mail/uploadfile?id=" + mail_id)
         # return render_template('mail/picupload.html', id=mail_id, default_message=default_message)
         #return redirect(url_for('mail.lan', id=mail_id))
-    return render_template('page-500.html', message=message), 500
+    return render_template('mail/mail500.html', message=message, mail_id=mail_id)
 
 
 @blueprint.route('/mail/show', methods=['POST', 'GET'])
@@ -154,7 +154,7 @@ def lan():
             message = "圖片驗證失敗 原因:" + result_json['error']
             status_code = result_json['status']
             current_app.logger.error(f' 圖片驗證失敗 { message } status: {status_code}  ')
-            return render_template('page-500.html', message=message), int(status_code)
+            return render_template('mail/mail500.html', message=message, mail_id=mail_id)
         else:
             current_app.logger.info(f' 加密郵件id {mail_id} 驗證成功  ')
         #顯示解密結果
@@ -166,13 +166,21 @@ def lan():
             else:
                 message = "圖片驗證失敗,失敗原因：" + str(result_json['message']) + " code: " + str(result_json['code'])
                 current_app.logger.error(f' 圖片驗證失敗 {message} ')
-                return render_template('page-500.html', message=message), 500
+                return render_template('mail/mail500.html', message=message, mail_id=mail_id)
         else:
             message = "圖片驗證失敗"
             current_app.logger.error(f' 圖片驗證失敗 {message} ')
-            return render_template('page-500.html', message=message), 500
+            return render_template('mail/mail500.html', message=message, mail_id=mail_id)
     else:
         default_message = gettext(u'Drop files here to upload')
     mail_id = request.args.get('id')
     return render_template('mail/picupload.html', id=mail_id, default_message=default_message)
+
+
+@blueprint.route('/mail/reload', methods=['POST', 'GET'])
+def reload():
+    mail_id = request.args.get('mail_id')
+    current_language = request.accept_languages.best
+    session['language'] = current_language
+    return redirect(request.host_url + "portal/" + current_language +"/mail/uploadfile?id=" + mail_id)
 

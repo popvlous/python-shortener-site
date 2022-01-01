@@ -91,35 +91,13 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>解密後信件內容</h2>
+          <h2>解密失敗</h2>
            <div class="form-group mt-3">
-               <p>解密內容</p>
-               <table id="TableMenuList" class="table table-bordered table-striped">
-                   <tbody style="text-align: left;background: white">
-                   <tr>
-                      <td>{{content | safe}}</td>
-                   </tr>
-                   </tbody>
-                </table>
+               <p>解密郵件失敗原因</p>
+               <span style="color:red">{{ message }}</span>
             </div>
             <div class="form-group mt-3">
-                <p>解密附件</p>
-                    <table id="TableMenuList" class="table table-bordered table-striped">
-                        <thead>
-                        <th>附件名稱</th>
-                        <th>附件大小</th>
-                        <th>附件連結</th>
-                        </thead>
-                        <tbody>
-                        {% for attch in attachment %}
-                            <tr>
-                                <td>{{ attch.fileName }}  </td>
-                                <td>{{ attch.fileSize }}  </td>
-                                <td><a href="{{ attch.url }}" class="get-started-btn"><span>下載附件</span></a></td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                <div><a href="{{ url_for('mail.reload', mail_id=mail_id) }}" class="get-started-btn"><span>回上一頁</span></a></div>
             </div>
         </div>
 

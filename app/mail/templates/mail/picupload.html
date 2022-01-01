@@ -94,13 +94,13 @@
 
         <div class="section-title">
           <h2>Agora郵件解密</h2>
-          <p>請準備寄件者交給您的加密圖片，並將圖片拉到下方的框框後，即可解開該文件的內容。</p>
+          <p>請準備欲解密郵件的全部附件，以及雙方定義好的解密圖片一併上傳至下方區塊解密。</p>
 {#            <div id='div1'>請將圖片拖拉到此處</div>#}
 {#            <ul id='ul1'></ul>#}
             {{ dropzone.create(action=url_for('mail.upload', id=id)) }}
             <form method="POST" enctype="multipart/form-data" action="">
 {#                <input type="file" name="file[]" multiple>#}
-                <input type="submit" name="check_mail" value="送出檔案解密"><br>
+                <input type="submit" name="check_mail" class="get-started-btn" value="送出檔案解密"><br>
             </form>
             {% for link in file_lists %}
                     - {{ link }}<br>
