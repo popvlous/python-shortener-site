@@ -37,6 +37,35 @@ class Users(db.Model, UserMixin):
         return self
 
 
+class Advises(db.Model, UserMixin):
+
+    __tablename__ = 'Advises'
+
+    id = db.Column(db.Integer,     primary_key=True)
+    name = db.Column(db.String(100),  unique = True)
+    email = db.Column(db.String(120), unique = True)
+    subject = db.Column(db.String(120), unique=True)
+    message = db.Column(db.String(500))
+
+    def __init__(self, user, email, password):
+        self.user       = user
+        self.password   = password
+        self.email      = email
+
+    def __repr__(self):
+        return str(self.id) + ' - ' + str(self.user)
+
+    def save(self):
+
+        # inject self into db session
+        db.session.add ( self )
+
+        # commit change and save the object
+        db.session.commit( )
+
+        return self
+
+
 @login_manager.user_loader
 def user_loader(id):
     try:

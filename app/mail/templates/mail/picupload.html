@@ -5,7 +5,7 @@
 		<meta charset="utf-8" />
 		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-		<title>Agora Mail - Products</title>
+		<title>Agora Mail - Decrypted Mail</title>
 		<meta content="" name="description" />
 		<meta content="" name="keywords" />
 
@@ -53,10 +53,10 @@
 
 				<nav id="navbar" class="navbar">
 					<ul>
-						<li><a class="active" data-hover="Home" href="index.html"><span>Home</span></a></li>
-						<li><a data-hover="About" href="about.html"><span>About</span></a></li>
-						<li><a data-hover="Products" href="products.html"><span>Products</span></a></li>
-						<li><a data-hover="Contact" href="contact.html"><span>Contact</span></a></li>
+						<li><a class="active" data-hover="Home" href="../index.html"><span>Home</span></a></li>
+						<li><a data-hover="About" href="../about.html"><span>About</span></a></li>
+						<li><a data-hover="Products" href="../products.html"><span>Products</span></a></li>
+						<li><a data-hover="Contact" href="../contact.html"><span>Contact</span></a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
 				</nav>
@@ -73,10 +73,10 @@
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Products</h2>
+          <h2>Decrypted Mail</h2>
           <ol>
             <li><a href="index.html"><span>Home</span></a></li>
-            <li>Products</li>
+            <li>Decrypted Mail</li>
           </ol>
         </div>
 
@@ -91,8 +91,19 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>我們的商品與定價</h2>
-          <p>我們為您準備最合適的方案，將安全與效率交給您，合理定價立即取得合乎企業管理需求的工具。</p>
+          <h2>Agora郵件解密</h2>
+          <p>請準備寄件者交給您的加密圖片，並將圖片拉到下方的文字後，即可解開該文件的內容。</p>
+            <div id='div1'>請將圖片拖拉到此處</div>
+            <ul id='ul1'></ul>
+            <form method="POST" enctype="multipart/form-data" action="">
+                <input type="file" name="file[]" multiple="">
+                <input type="submit" value="上傳資料驗證"><br>
+                {% for photo in file_lists %}
+                    - {{ photo.filename }}<br>
+{#                    <a href="{{ url_for('open_file', filename=photo) }}">open</a>
+                    <a href="{{ url_for('delete_file', filename=photo) }}">del</a><br>#}
+                {% endfor %}
+            </form>
         </div>
 
         <div class="row no-gutters">
@@ -188,5 +199,91 @@
 
 		<!-- Agora Main JS File -->
 		<script src="/static/agora/js/main.js"></script>
+        {% include 'includes/scripts.html' %}
+        <script>
+            //拖拉上傳圖片
+            window.onload = function(){
+              var oDiv  = document.getElementById('div1');
+              var oUl  = document.getElementById('ul1');
+              var xhr;
+              if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+              }else{
+                xhr = new ActiveXObject("Microsoft.XMLHttp")
+              }
+
+              document.ondragover = function(ev){ ev.preventDefault() } // 阻止文件拖拽到oDiv以外的地方会打开文件
+              document.ondrop = function(ev){ ev.preventDefault() }     // 阻止文件拖拽到oDiv以外的地方会打开文件
+
+              oDiv.ondragenter = function(ev){
+                this.innerHTML = '釋放鼠標案件，上傳資料';
+              }
+              oDiv.ondragleave = function(ev){
+                this.innerHTML = '請將加密文件拖拉到此處';
+              }
+              oDiv.ondragover = function(ev){
+                ev.preventDefault()
+              }
+              oDiv.ondrop = function(ev){    // 想要出发 ondrop 事件，必须在 ondragover 阻止默认事件
+                this.style.background = 'pink'
+                ev.preventDefault();         // 阻止默认事件：浏览器打开文件
+
+                var fs = ev.dataTransfer.files;
+                var fd = new FileReader();   // 对象允许Web应用程序异步读取存储在用户计算机上的文件
+                fd.readAsDataURL(fs[0]);     // 读取文件, 读取成功触发 onload 函数。
+
+                fd.onload = function(){      // 读取文件成功后将文件展示到页面
+                  var oLi = document.createElement('li');
+                  var oImg = document.createElement('img');
+                  oImg.src = this.result;
+                  oLi.appendChild(oImg);
+                  oUl.appendChild(oLi);
+                    //先取得網址字串，假設此頁網址為「index.aspx?id=U001&name=GQSM」
+                    var url = location.href;
+
+                    //再來用去尋找網址列中是否有資料傳遞(QueryString)
+                    if(url.indexOf('?')!=-1)
+                    {
+                        var id = "";
+                        //在此直接將各自的參數資料切割放進ary中
+                        var ary = url.split('?')[1].split('&');
+                        //此時ary的內容為：
+                        //ary[0] = 'id=U001'，ary[1] = 'name=GQSM'
+
+                        //下迴圈去搜尋每個資料參數
+                        for(i=0;i<=ary.length-1;i++)
+                        {
+                            //如果資料名稱為id的話那就把他取出來
+                            if(ary[i].split('=')[0] == 'id')
+                                id = ary[i].split('=')[1];
+                        }
+
+                    }
+                    $.ajax({
+                        url:'/portal/mail/upload',
+                        type:'POST',
+                        data:JSON.stringify({ img:this.result, id:id }),
+                        dataType: 'json',
+                        success:function(res){
+                            console.log(res)
+                            console.log(0)
+                            location.href = "http://127.0.0.1:5000/portal/mail/show?content=" + res.content + "&email=" + res.email
+                        },
+                        error:function (res) {
+                            console.log(res);
+                            console.log(1)
+                        }
+                    })
+                  {#xhr.onreadystatechange = function(){
+                    if(xhr.status == 200 && xhr.readyState == 4){
+                      //
+                    }
+                  }
+                  xhr.open('POST','/portal/mail/upload')
+                  xhr.send( JSON.stringify({ img:this.result, id:id }) )  // 上传的是 base64 格式的二进制码#}
+                }
+              }
+            }
+          </script>
 	</body>
 </html>

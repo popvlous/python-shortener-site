@@ -7,7 +7,7 @@ Copyright (c) 2019 - present AppSeed.us
 import os
 
 # Flask modules
-from flask import render_template, request, url_for, redirect, send_from_directory
+from flask import render_template, request, url_for, redirect, send_from_directory, current_app
 from flask_login import (
     login_user,
     logout_user
@@ -101,10 +101,13 @@ def login():
 
             if verify_pass(password, user.password):
                 login_user(user)
+                current_app.logger.error(f'{username} 登入成功 ')
                 return redirect(url_for('home.index'))
             else:
+                current_app.logger.error(f'{username} 輸入發生錯誤: 輸入密碼為{password} ')
                 msg = "Wrong password. Please try again."
         else:
+            current_app.logger.error(f'{username} 找不到對應的user ')
             msg = "Unknown user"
 
     return render_template('accounts/login.html', form=form, msg=msg)

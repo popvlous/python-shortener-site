@@ -597,7 +597,7 @@ section {
 }
 
 .section {
-	min-height: 100vh - $margin*2;
+	min-height: calc(100vh - $margin*2);
 
 	&-bg {
 		background: darken($white, 3%);
@@ -626,7 +626,7 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-	padding: $textSize 0;
+	padding: $textSize * 2 0;
 	background-color: $white;
 
 	h2{
@@ -725,24 +725,44 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
-.about h3 {
-	font-weight: 400;
-	font-size: 26px;
-}
-.about ul {
-	list-style: none;
-	padding: 0;
-}
-.about ul li {
-	padding-bottom: 10px;
-}
-.about ul i {
-	font-size: 20px;
-	padding-right: 4px;
-	color: #68a4c4;
-}
-.about p:last-child {
-	margin-bottom: 0;
+.about {
+	background-image: url("/agora/img/about.svg");
+	background-position: -30% 0;
+	background-size: 40%;
+	background-repeat: no-repeat;
+
+	.describe {
+		@extend %box, %box1;
+		margin-bottom: 0;
+	}
+
+
+	h3{
+		font-weight: 500;
+		font-size: $textSize * 2;
+		margin: $padding 0;
+	}
+
+	ul{
+		list-style: none;
+		padding: 0;
+
+		li {
+			padding-bottom: $radius;
+		
+			&:last-child{padding: 0};
+		}
+	}
+
+	i{
+		font-size: $textSize * 1.5;
+		padding-right: $letterSpacing;
+		color: $main;
+	}
+
+	p{
+		&:last-child{margin-bottom: 0;}
+	}
 }
 
 /*--------------------------------------------------------------
@@ -765,26 +785,38 @@ section {
 --------------------------------------------------------------*/
 .skills {
 	padding: 60px 0;
-}
-.skills .progress {
-	height: 35px;
-	margin-bottom: 10px;
-}
-.skills .progress .skill {
-	line-height: 35px;
-	padding: 0;
-	margin: 0 0 0 20px;
-	text-transform: uppercase;
-}
-.skills .progress .skill .val {
-	float: right;
-	font-style: normal;
-	margin: 0 20px 0 0;
-}
-.skills .progress-bar {
-	width: 1px;
-	text-align: left;
-	transition: 0.9s;
+
+	.section-title{padding-bottom: $padding;}
+
+	.progress {
+		@extend %progress, %box2;
+		height: auto;
+
+		&:last-child{margin-bottom: 0;}
+
+		.progress-bar {
+			border-radius: $radius / 2;
+			width: 1px;
+			text-align: left;
+			transition: $transition;
+
+			.skill {
+				line-height: $padding;
+				padding: 0;
+				margin: 0 0 0 $textSize;
+				text-transform: uppercase;
+				font-size: $textSize;
+				font-weight: 800;
+
+				.val {
+					float: right;
+					font-style: normal;
+					margin: 0 $textSize 0 0;
+					font-weight: 400;
+				}
+			}
+		}
+	}
 }
 
 /*--------------------------------------------------------------
@@ -1327,6 +1359,17 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Bootstrap Customize
+--------------------------------------------------------------*/
+
+.bg {
+	&-success {background: $main !important;}
+	&-info {background: $blue !important;}
+	&-warning {background: $green !important;}
+	&-danger {background: $yellow !important;}
+}
+
+/*--------------------------------------------------------------
 # Cursor Variation
 --------------------------------------------------------------*/
 
@@ -1360,10 +1403,6 @@ section {
 					00ms transform cubic-bezier(0.39, 0.575, 0.565, 1),
 					300ms border-radius cubic-bezier(0.39, 0.575, 0.565, 1);
 	}
-
-	.logo {
-		&:after{boder: 0;}
-	}
 }
 @media (pointer: fine) {
   .cursor {
@@ -1381,8 +1420,8 @@ a {
 		appearance: none;
 		border: none;
 		cursor: inherit;
-		margin: 0;
-		padding: 0 $radius $letterSpacing $radius;
+		margin: 0 $letterSpacing;
+		padding: $letterSpacing 0 $letterSpacing $radius;
 		background: none;
 		border-radius: $letterSpacing;
 		text-decoration: underline dotted;
@@ -1390,3 +1429,4 @@ a {
 
 	&:not([href]):not([class]):hover ~ .cursor {text-decoration-line: none;}
 }
+

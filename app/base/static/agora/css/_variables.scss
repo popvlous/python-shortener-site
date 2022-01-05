@@ -102,3 +102,9 @@ $transition:				all	.4s ease-in-out;
 
 		&:hover{color: $secondary;}
 }
+
+%progress {
+	padding: $textSize;
+	margin-bottom: $textSize * 2;
+	border-radius: $radius;
+}

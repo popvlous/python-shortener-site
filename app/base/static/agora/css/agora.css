@@ -9,19 +9,19 @@ a:hover span, button:hover span {
           animation: hover1 0.25s linear 0s 1 both, hover2 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0.25s 1 forwards;
 }
 
-.pricing .box, .contact .info-box, .contact .php-email-form {
+.about .describe, .pricing .box, .contact .info-box, .contact .php-email-form {
   margin-bottom: 3rem;
   padding: 3rem;
   border-radius: 1.5rem;
 }
 
-.contact .info-box, .contact .php-email-form {
+.about .describe, .contact .info-box, .contact .php-email-form {
   background: #F7F7F7;
   -webkit-box-shadow: -5px -5px 13px white, 3px 3px 26px -8px rgba(41, 50, 65, 0.18);
           box-shadow: -5px -5px 13px white, 3px 3px 26px -8px rgba(41, 50, 65, 0.18);
 }
 
-.pricing .box {
+.skills .progress, .pricing .box {
   background: #efefef;
   -webkit-box-shadow: -5px -5px 13px #F7F7F7, 3px 3px 26px -8px rgba(41, 50, 65, 0.26);
           box-shadow: -5px -5px 13px #F7F7F7, 3px 3px 26px -8px rgba(41, 50, 65, 0.26);
@@ -92,6 +92,12 @@ a:hover span, button:hover span {
 
 .pricing .get-started-btn:hover {
   color: #D7CF07;
+}
+
+.skills .progress {
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.75rem;
 }
 
 /******** vender/sass/mixins/_image.scss ********/
@@ -807,7 +813,7 @@ section {
 }
 
 .section {
-  height: calc(100vh - $margin*2);
+  min-height: calc(100vh - $margin*2);
 }
 
 .section-bg {
@@ -838,7 +844,7 @@ section {
 # Breadcrumbs
 --------------------------------------------------------------*/
 .breadcrumbs {
-  padding: 1rem 0;
+  padding: 2rem 0;
   background-color: #F7F7F7;
 }
 
@@ -943,9 +949,21 @@ section {
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
+.about {
+  background-image: url("/agora/img/about.svg");
+  background-position: -30% 0;
+  background-size: 40%;
+  background-repeat: no-repeat;
+}
+
+.about .describe {
+  margin-bottom: 0;
+}
+
 .about h3 {
-  font-weight: 400;
-  font-size: 26px;
+  font-weight: 500;
+  font-size: 2rem;
+  margin: 3rem 0;
 }
 
 .about ul {
@@ -954,13 +972,17 @@ section {
 }
 
 .about ul li {
-  padding-bottom: 10px;
+  padding-bottom: 0.75rem;
 }
 
-.about ul i {
-  font-size: 20px;
-  padding-right: 4px;
-  color: #68a4c4;
+.about ul li:last-child {
+  padding: 0;
+}
+
+.about i {
+  font-size: 1.5rem;
+  padding-right: 0.25rem;
+  color: #EE6644;
 }
 
 .about p:last-child {
@@ -990,29 +1012,40 @@ section {
   padding: 60px 0;
 }
 
+.skills .section-title {
+  padding-bottom: 3rem;
+}
+
 .skills .progress {
-  height: 35px;
-  margin-bottom: 10px;
+  height: auto;
 }
 
-.skills .progress .skill {
-  line-height: 35px;
-  padding: 0;
-  margin: 0 0 0 20px;
-  text-transform: uppercase;
+.skills .progress:last-child {
+  margin-bottom: 0;
 }
 
-.skills .progress .skill .val {
-  float: right;
-  font-style: normal;
-  margin: 0 20px 0 0;
-}
-
-.skills .progress-bar {
+.skills .progress .progress-bar {
+  border-radius: 0.375rem;
   width: 1px;
   text-align: left;
-  -webkit-transition: 0.9s;
-  transition: 0.9s;
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.skills .progress .progress-bar .skill {
+  line-height: 3rem;
+  padding: 0;
+  margin: 0 0 0 1rem;
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.skills .progress .progress-bar .skill .val {
+  float: right;
+  font-style: normal;
+  margin: 0 1rem 0 0;
+  font-weight: 400;
 }
 
 /*--------------------------------------------------------------
@@ -1625,6 +1658,25 @@ section {
 }
 
 /*--------------------------------------------------------------
+# Bootstrap Customize
+--------------------------------------------------------------*/
+.bg-success {
+  background: #EE6644 !important;
+}
+
+.bg-info {
+  background: #3F84E5 !important;
+}
+
+.bg-warning {
+  background: #17A398 !important;
+}
+
+.bg-danger {
+  background: #D7CF07 !important;
+}
+
+/*--------------------------------------------------------------
 # Cursor Variation
 --------------------------------------------------------------*/
 .cursor {
@@ -1681,8 +1733,8 @@ a:not([href]):not([class]) {
           appearance: none;
   border: none;
   cursor: inherit;
-  margin: 0;
-  padding: 0 0.75rem 0.25rem 0.75rem;
+  margin: 0 0.25rem;
+  padding: 0.25rem 0 0.25rem 0.75rem;
   background: none;
   border-radius: 0.25rem;
   -webkit-text-decoration: underline dotted;
