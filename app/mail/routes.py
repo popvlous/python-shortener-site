@@ -71,14 +71,19 @@ def upload():
             current_app.logger.error(f' 圖片驗證失敗 { message } status: {status_code}  ')
             return render_template('page-500.html', message=message), int(status_code)
         else:
-            data = result_json['data']
             current_app.logger.error(f' 加密郵件id {mail_id} 驗證成功  ')
         #顯示解密結果
         if result_json:
             #return result
             #return render_template('mail/picupload.html', id=id, file_lists=file_lists)
             #return redirect(url_for('mail.show', content=result['content'], email=result['email']))
-            return render_template('mail/show.html', content=str(data['mailbody']), attachment=data['attachment'])
+            if result_json['code'] == 0:
+                data = result_json['data']
+                return render_template('mail/show.html', content=str(data['mailbody']), attachment=data['attachment'])
+            else:
+                message = "圖片驗證失敗,失敗原因：" + str(result_json['message']) + " code: " + str(result_json['code'])
+                current_app.logger.error(f' 圖片驗證失敗 {message} ')
+                return render_template('page-500.html', message=message), 500
         else:
             message = "圖片驗證失敗"
             current_app.logger.error(f' 圖片驗證失敗 {message} ')

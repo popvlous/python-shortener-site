@@ -11,26 +11,22 @@ from app import create_app, db
 from config import config_dict
 
 # WARNING: Don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=True, cast=bool)
-
-# The configuration
-get_config_mode = 'Debug' if DEBUG else 'Production'
+FLASK_ENV = config('FLASK_ENV', default="development", cast=str)
+FLASK_DEBUG = config('FLASK_DEBUG', default="1", cast=bool)
 
 try:
-
-    # Load the configuration using the default values
-    app_config = config_dict[get_config_mode.capitalize()]
-
+    app_config = config_dict[FLASK_ENV]
 except KeyError:
-    exit('Error: Invalid <config_mode>. Expected values [Debug, Production] ')
+    exit('Error: Invalid <config_mode>. Expected values [Debug, ITE, development, Production] ')
+
 
 app = create_app(app_config)
 Migrate(app, db)
 
-if DEBUG:
-    app.logger.info('DEBUG       = ' + str(DEBUG))
-    app.logger.info('Environment = ' + get_config_mode)
-    app.logger.info('DBMS        = ' + app_config.SQLALCHEMY_DATABASE_URI)
+if FLASK_ENV:
+    app.logger.info('DEBUG       = ' + str(FLASK_DEBUG))
+    app.logger.info('Environment = ' + FLASK_ENV)
+    app.logger.info('DBMS        = ' + str(app_config.SQLALCHEMY_DATABASE_URI))
 
 # .ENV檔案中設定測試環境DEBUG=True , 正式環境DEBUG=False
 if __name__ == "__main__":
