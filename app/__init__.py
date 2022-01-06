@@ -10,12 +10,15 @@ from flask import Flask
 from flask_login import LoginManager
 # from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
+from flask_dropzone import Dropzone
 
 db = SQLAlchemy()
+dropzone = Dropzone()
 login_manager: LoginManager = LoginManager()
 
 def register_extensions(app):
     db.init_app(app)
+    dropzone.init_app(app)
     login_manager.init_app(app)
 
 def register_blueprints(app):

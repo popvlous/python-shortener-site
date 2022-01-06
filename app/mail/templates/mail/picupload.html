@@ -39,6 +39,8 @@
 
 		<!-- Agora CSS Files -->
 		<link href="/static/agora/css/agora.css" rel="stylesheet" />
+        {{ dropzone.load_css() }}
+        {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%') }}
 	</head>
 
 <body>
@@ -92,18 +94,19 @@
 
         <div class="section-title">
           <h2>Agora郵件解密</h2>
-          <p>請準備寄件者交給您的加密圖片，並將圖片拉到下方的文字後，即可解開該文件的內容。</p>
-            <div id='div1'>請將圖片拖拉到此處</div>
-            <ul id='ul1'></ul>
+          <p>請準備寄件者交給您的加密圖片，並將圖片拉到下方的框框後，即可解開該文件的內容。</p>
+{#            <div id='div1'>請將圖片拖拉到此處</div>#}
+{#            <ul id='ul1'></ul>#}
+            {{ dropzone.create(action=url_for('mail.upload', id=id)) }}
             <form method="POST" enctype="multipart/form-data" action="">
-                <input type="file" name="file[]" multiple="">
-                <input type="submit" value="上傳資料驗證"><br>
-                {% for photo in file_lists %}
-                    - {{ photo.filename }}<br>
+{#                <input type="file" name="file[]" multiple>#}
+                <input type="submit" name="check_mail" value="送出檔案解密"><br>
+            </form>
+            {% for link in file_lists %}
+                    - {{ link }}<br>
 {#                    <a href="{{ url_for('open_file', filename=photo) }}">open</a>
                     <a href="{{ url_for('delete_file', filename=photo) }}">del</a><br>#}
-                {% endfor %}
-            </form>
+            {% endfor %}
         </div>
 
         <div class="row no-gutters">
@@ -199,10 +202,14 @@
 
 		<!-- Agora Main JS File -->
 		<script src="/static/agora/js/main.js"></script>
+        <!-- dropzone Main JS File -->
+        {{ dropzone.load_js() }}
+        <!-- dropzone Main JS Config for upload_mutiple -->
+        {{ dropzone.config(max_files=10, timeout=10000, upload_mutiple=true, parallel_uploads=10, allowed_file_type='image/*, .pdf, .txt, .encrypt', allowed_file_custom=true) }}
         {% include 'includes/scripts.html' %}
         <script>
             //拖拉上傳圖片
-            window.onload = function(){
+{#            window.onload = function(){
               var oDiv  = document.getElementById('div1');
               var oUl  = document.getElementById('ul1');
               var xhr;
@@ -274,16 +281,16 @@
                             console.log(1)
                         }
                     })
-                  {#xhr.onreadystatechange = function(){
+                  #}{#xhr.onreadystatechange = function(){
                     if(xhr.status == 200 && xhr.readyState == 4){
                       //
                     }
                   }
                   xhr.open('POST','/portal/mail/upload')
-                  xhr.send( JSON.stringify({ img:this.result, id:id }) )  // 上传的是 base64 格式的二进制码#}
+                  xhr.send( JSON.stringify({ img:this.result, id:id }) )  // 上传的是 base64 格式的二进制码#}{#
                 }
               }
-            }
+            }#}
           </script>
 	</body>
 </html>

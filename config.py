@@ -34,6 +34,14 @@ class Config(object):
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
+    #flask dropzone
+    DROPZONE_UPLOAD_MULTIPLE = True  # enable upload multiple
+    DROPZONE_PARALLEL_UPLOADS = 10# set parallel amount
+    DROPZONE_ALLOWED_FILE_CUSTOM = True
+    DROPZONE_ALLOWED_FILE_TYPE = 'image/*, .pdf, .txt, .encrypt'
+    DROPZONE_MAX_FILE_SIZE = 10
+    DROPZONE_MAX_FILES = 10000
+
     # EMAIL SETTINGS
     MAIL_SERVER='smtp.gmail.com'
     MAIL_PORT=465
@@ -65,6 +73,15 @@ class ProductionConfig(Config):
         "pool_recycle": 300,
     }
 
+    #flask dropzone
+    DROPZONE_UPLOAD_MULTIPLE = True  # enable upload multiple
+    DROPZONE_PARALLEL_UPLOADS = 3# set parallel amount
+    DROPZONE_ALLOWED_FILE_CUSTOM = True
+    DROPZONE_ALLOWED_FILE_TYPE = 'image/*, .pdf, .txt, .encrypt'
+    DROPZONE_MAX_FILE_SIZE = 3
+    DROPZONE_MAX_FILES = 30000
+
+
     # EMAIL SETTINGS
     MAIL_SERVER='smtp.gmail.com'
     MAIL_PORT=465
@@ -73,6 +90,7 @@ class ProductionConfig(Config):
     MAIL_MAX_EMAILS=10
     MAIL_USERNAME='popvlous007@gmail.com'
     MAIL_PASSWORD='Foxconn@890'
+
 
 class DebugConfig(Config):
     DEBUG = True
