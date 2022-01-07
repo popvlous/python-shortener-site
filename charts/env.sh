@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
-export tag="0.0.22"
+export tag="0.0.1"
 export replicas=2
 export PORTS=5005
 # git專案目錄為
-# https://gitlab.nexuera.com/ams/python-agora-backend.git
+# https://gitlab.nexuera.com/fred/python-ams-comsumer.git
 # 請填以下資訊
-export PROJROOT="python-agora-backend"
-export GIT_PROJ="ams/python-agora-backend.git"
+export PROJROOT="python-ams-comsumer"
+export GIT_PROJ="fred/python-ams-comsumer.git"
 
 # 自定義
-export image="backend"
-export svc="backend"
+export image="comsumer"
+export svc="comsumer"
 export namespace="agora"
-export STAG_URL="agoraite.nexuera.com"
+export STAG_URL="agoraweb.nexuera.com"
 export STAG_TLS="cf-tls"
-export PROD_URL="agora.pyrarc.com"
+export PROD_URL="agoraweb.pyrarc.com"
 export PROD_TLS="cf-tls"
 # 假定所有的專案都放在~/apps底下
 export APPROOT="~/apps"
