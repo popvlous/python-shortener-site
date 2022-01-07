@@ -19,31 +19,10 @@ spec:
   - host: ${STAG_URL}
     http:
       paths:
-        - path: /postfix
+        - path: /portal
           pathType: Prefix
           backend:
             service:
-              name: agora-stag
-              port:
-                number: 80
-        - path: /
-          pathType: Prefix
-          backend:
-            service:
-              name: nginx-stag
-              port:
-                number: 80
-        - path: /image-compare
-          pathType: Prefix
-          backend:
-            service:
-              name: ice-ite
-              port:
-                number: 80
-        - path: /backend
-          pathType: Prefix
-          backend:
-            service:
-              name: backend-ite
+              name: {svc}-ite
               port:
                 number: 80
