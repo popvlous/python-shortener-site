@@ -23,6 +23,6 @@ spec:
           pathType: Prefix
           backend:
             service:
-              name: {svc}-ite
+              name: ${svc}-ite
               port:
                 number: 80
