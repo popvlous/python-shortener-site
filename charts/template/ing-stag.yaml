@@ -2,7 +2,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: agora-ite
+  name: portal-ite
   namespace: ${namespace}
   annotations:
     kubernetes.io/ingress.class: "nginx"
