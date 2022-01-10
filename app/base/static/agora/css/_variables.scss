@@ -69,7 +69,10 @@ $transition:				all	.4s ease-in-out;
 	box-shadow: $inputShadow;
 	font-size: $radius;
 	
-	&::placeholder {color: rgba($text, .26);}
+	&::placeholder {
+		background: transparent;
+		color: rgba($text, .26);
+	}
 }
 
 %btnPrimary {

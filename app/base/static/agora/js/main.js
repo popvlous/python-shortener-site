@@ -290,6 +290,7 @@
     });
 
     document.querySelectorAll("a, button").forEach((elem) => {
+      if (elem.className === 'noCursor') return;
       elem.addEventListener("mouseenter", () => (onElement = elem));
       elem.addEventListener("mouseleave", () => (onElement = undefined));
     });

@@ -727,7 +727,7 @@ section {
 --------------------------------------------------------------*/
 .about {
 	background-image: url("/agora/img/about.svg");
-	background-position: -30% 0;
+	background-position: -30% -25%;
 	background-size: 40%;
 	background-repeat: no-repeat;
 
@@ -763,21 +763,6 @@ section {
 	p{
 		&:last-child{margin-bottom: 0;}
 	}
-}
-
-/*--------------------------------------------------------------
-# Facts
---------------------------------------------------------------*/
-.facts .counters span {
-	font-size: 48px;
-	display: block;
-	color: #68a4c4;
-}
-.facts .counters p {
-	padding: 0;
-	margin: 0 0 20px 0;
-	font-family: "Roboto", sans-serif;
-	font-size: 14px;
 }
 
 /*--------------------------------------------------------------
@@ -817,137 +802,6 @@ section {
 			}
 		}
 	}
-}
-
-/*--------------------------------------------------------------
-# Tetstimonials
---------------------------------------------------------------*/
-.testimonials {
-	padding: 60px 0;
-}
-.testimonials .section-header {
-	margin-bottom: 40px;
-}
-.testimonials .testimonials-carousel {
-	overflow: hidden;
-}
-.testimonials .testimonial-item {
-	text-align: center;
-}
-.testimonials .testimonial-item .testimonial-img {
-	width: 120px;
-	border-radius: 50%;
-	border: 4px solid #fff;
-	margin: 0 auto;
-}
-.testimonials .testimonial-item h3 {
-	font-size: 20px;
-	font-weight: bold;
-	margin: 10px 0 5px 0;
-	color: #111;
-}
-.testimonials .testimonial-item h4 {
-	font-size: 14px;
-	color: #999;
-	margin: 0 0 15px 0;
-}
-.testimonials .testimonial-item .quote-icon-left,
-.testimonials .testimonial-item .quote-icon-right {
-	color: #fbfcfd;
-	font-size: 26px;
-}
-.testimonials .testimonial-item .quote-icon-left {
-	display: inline-block;
-	left: -5px;
-	position: relative;
-}
-.testimonials .testimonial-item .quote-icon-right {
-	display: inline-block;
-	right: -5px;
-	position: relative;
-	top: 10px;
-}
-.testimonials .testimonial-item p {
-	font-style: italic;
-	margin: 0 auto 15px auto;
-}
-.testimonials .swiper-pagination {
-	margin-top: 20px;
-	position: relative;
-}
-.testimonials .swiper-pagination .swiper-pagination-bullet {
-	width: 12px;
-	height: 12px;
-	background-color: #fff;
-	opacity: 1;
-	border: 1px solid #68a4c4;
-}
-.testimonials .swiper-pagination .swiper-pagination-bullet-active {
-	background-color: #68a4c4;
-}
-
-/*--------------------------------------------------------------
-# Service Details
---------------------------------------------------------------*/
-.service-details {
-	padding-bottom: 10px;
-}
-.service-details .card {
-	border: 0;
-	padding: 0 30px;
-	margin-bottom: 60px;
-	position: relative;
-}
-.service-details .card-img {
-	width: calc(100% + 60px);
-	margin-left: -30px;
-	overflow: hidden;
-	z-index: 9;
-	border-radius: 0;
-}
-.service-details .card-img img {
-	max-width: 100%;
-	transition: all 0.3s ease-in-out;
-}
-.service-details .card-body {
-	z-index: 10;
-	background: #fff;
-	border-top: 4px solid #fff;
-	padding: 30px;
-	box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-	margin-top: -60px;
-	transition: 0.3s;
-}
-.service-details .card-title {
-	font-weight: 700;
-	text-align: center;
-	margin-bottom: 20px;
-}
-.service-details .card-title a {
-	color: #1e4356;
-	transition: 0.3s;
-}
-.service-details .card-text {
-	color: #5e5e5e;
-}
-.service-details .read-more a {
-	color: #777777;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 12px;
-	transition: 0.3s;
-}
-.service-details .read-more a:hover {
-	color: #68a4c4;
-}
-.service-details .card:hover img {
-	transform: scale(1.1);
-}
-.service-details .card:hover .card-body {
-	border-color: #68a4c4;
-}
-.service-details .card:hover .card-body .card-title a {
-	color: #68a4c4;
 }
 
 /*--------------------------------------------------------------
@@ -1044,78 +898,6 @@ section {
 		margin: 0 auto $padding auto;
 	}
 }
-
-/*--------------------------------------------------------------
-# Team
---------------------------------------------------------------*/
-.team {
-	background: #fff;
-}
-.team .member {
-	margin-bottom: 20px;
-	overflow: hidden;
-}
-.team .member .member-img {
-	position: relative;
-	overflow: hidden;
-}
-.team .member .social {
-	position: absolute;
-	left: 0;
-	bottom: -40px;
-	right: 0;
-	height: 40px;
-	opacity: 0;
-	transition: bottom ease-in-out 0.4s;
-	text-align: center;
-	background: rgba(30, 67, 86, 0.8);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-.team .member .social a {
-	transition: color 0.3s;
-	color: #fff;
-	margin: 0 12px;
-	display: inline-block;
-}
-.team .member .social a:hover {
-	color: #68a4c4;
-}
-.team .member .social i {
-	font-size: 18px;
-	margin: 0 2px;
-}
-.team .member .member-info h4 {
-	font-weight: 700;
-	margin: 15px 0 5px 0;
-	font-size: 18px;
-}
-.team .member .member-info span {
-	display: block;
-	font-size: 13px;
-	text-transform: uppercase;
-	font-weight: 400;
-	margin-bottom: 15px;
-	color: #68a4c4;
-}
-.team .member .member-info p {
-	font-style: italic;
-	font-size: 14px;
-	line-height: 26px;
-	color: #666;
-}
-.team .member:hover .social {
-	bottom: 0;
-	opacity: 1;
-	transition: bottom ease-in-out 0.4s;
-}
-.team .member:hover .social a,
-.team .member:hover .social i {
-	line-height: 0;
-	font-size: 18px;
-}
-
 /*--------------------------------------------------------------
 # Contact
 --------------------------------------------------------------*/
@@ -1133,6 +915,7 @@ section {
 			color: $main;
 			border-radius: 50%;
 			padding: $radius;
+			margin-bottom: $textSize;
 			border: 2px dotted $main;
 		}
 
@@ -1142,79 +925,74 @@ section {
 			font-weight: 700;
 			margin: 10px 0;
 		}
-	}
-}
-.contact .info-box h3 {
-	font-size: 20px;
-	color: $text;
-	font-weight: 700;
-	margin: 10px 0;
-}
-.contact .info-box p {
-	padding: 0;
-	line-height: 24px;
-	font-size: 14px;
-	margin-bottom: 0;
-}
-.contact .php-email-form {
-	@extend %box, %box1;
-}
-.contact .php-email-form .error-message {
-	display: none;
-	color: #fff;
-	background: $red;
-	text-align: left;
-	padding: 15px;
-	font-weight: 600;
-}
-.contact .php-email-form .error-message br + br {
-	margin-top: 25px;
-}
-.contact .php-email-form .sent-message {
-	display: none;
-	color: #fff;
-	background: #18d26e;
-	text-align: center;
-	padding: 15px;
-	font-weight: 600;
-}
-.contact .php-email-form .loading {
-	display: none;
-	background: #fff;
-	text-align: center;
-	padding: 15px;
-}
-.contact .php-email-form .loading:before {
-	content: "";
-	display: inline-block;
-	border-radius: 50%;
-	width: 24px;
-	height: 24px;
-	margin: 0 10px -6px 0;
-	border: 3px solid #18d26e;
-	border-top-color: #eee;
-	-webkit-animation: animate-loading 1s linear infinite;
-	animation: animate-loading 1s linear infinite;
-}
-.contact .php-email-form input,
-.contact .php-email-form textarea {
-	@extend %input;
-	font-size: $textSize;
-}
-.contact .php-email-form input::focus,
-.contact .php-email-form textarea::focus {
-	background: $text;
-	color: $white;
-}
-.contact .php-email-form input {
-	padding: 10px 15px;
-}
-.contact .php-email-form textarea {
-	padding: 12px 15px;
-}
-.contact .php-email-form button[type="submit"] {
-	@extend %btnPrimary;
 
+		p{
+			padding: 0;
+			line-height: $padding;
+			font-size: $textSize;
+			margin-bottom: 0;
+		}
+	}
+
+	.php-email-form {
+		@extend %box, %box1;
+
+		.error-message {
+			display: none;
+			color: lighten($red, 13%);
+			background: transparent;
+			text-align: left;
+			padding: $textSize;
+			border-radius: $textSize / 2;
+			border: 3px solid lighten($red, 13%);
+
+			br + br{
+				margin-top: $padding;
+			}
+		}
+
+		.sent-message {
+			display: none;
+			color: $white;
+			background: $secondary;
+			text-align: center;
+			padding: $textSize;
+			font-weight: 600;
+		}
+
+		.loading {
+			display: none;
+			background: $white;
+			text-align: center;
+			padding: $textSize;
+
+			&:before{
+				content: "";
+				display: inline-block;
+				border-radius: 50%;
+				width: $padding;
+				height: $padding;
+				margin: 0 10px -6px 0;
+				border: 3px solid $secondary;
+				border-top-color: $white;
+				animation: animate-loading 1s linear infinite;
+			}
+		}
+
+		input, textarea{
+			@extend %input;
+			font-size: $textSize;
+
+			&:focus{
+				background: $white;
+				color: $text;
+			}
+		}
+
+		input{padding: $textSize * .75 $textSize;}
+		textarea{padding: $textSize * .8 $textSize;}
+		button[type="submit"]{@extend %btnPrimary;}
+	}
 }
 @-webkit-keyframes animate-loading {
 	0% {
@@ -1428,5 +1206,9 @@ a {
 	}
 
 	&:not([href]):not([class]):hover ~ .cursor {text-decoration-line: none;}
+}
+
+.logo .cursor::after{
+	border: 0;
 }
 

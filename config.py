@@ -63,15 +63,14 @@ class DevelopmentConfig(Config):
     # REMEMBER_COOKIE_HTTPONLY = True
     # REMEMBER_COOKIE_DURATION = 3600
 
-
     # This will create a file in <app> FOLDER
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
         config( 'DB_ENGINE'   , default='mysql'    ),
-        config( 'DB_USERNAME' , default='root'       ),
-        config( 'DB_PASS'     , default='root'          ),
-        config( 'DB_HOST'     , default='127.0.0.1'     ),
+        config( 'DB_USERNAME' , default='agora'       ),
+        config( 'DB_PASS'     , default='AGo#2021#zKy'          ),
+        config( 'DB_HOST'     , default='192.168.100.10'     ),
         config( 'DB_PORT'     , default=3306            ),
-        config( 'DB_NAME'     , default='amus' )
+        config( 'DB_NAME'     , default='amus_dev' )
     )
 
     SQLALCHEMY_ENGINE_OPTIONS = {
@@ -110,11 +109,11 @@ class ITEConfig(Config):
     # This will create a file in <app> FOLDER
     SQLALCHEMY_DATABASE_URI = '{}://{}:{}@{}:{}/{}?autocommit=true'.format(
         config( 'DB_ENGINE'   , default='mysql'    ),
-        config( 'DB_USERNAME' , default='root'       ),
-        config( 'DB_PASS'     , default='root'          ),
-        config( 'DB_HOST'     , default='127.0.0.1'     ),
+        config( 'DB_USERNAME' , default='agora'       ),
+        config( 'DB_PASS'     , default='AGo#2021#zKy'          ),
+        config( 'DB_HOST'     , default='192.168.100.10'     ),
         config( 'DB_PORT'     , default=3306            ),
-        config( 'DB_NAME'     , default='amus' )
+        config( 'DB_NAME'     , default='amus_ite' )
     )
 
     SQLALCHEMY_ENGINE_OPTIONS = {
