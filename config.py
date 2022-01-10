@@ -110,7 +110,7 @@ class ITEConfig(Config):
         config('DB_ENGINE', default='mysql'),
         config('DB_USERNAME', default='agora'),
         config('DB_PASS', default='AGo#2021#zKy'),
-        config('DB_HOST', default='kube-db.mariadb-primary'),
+        config('DB_HOST', default='mariadb-primary.kube-db'),
         config('DB_PORT', default=3306),
         config('DB_NAME', default='amus_ite')
     )
@@ -153,7 +153,7 @@ class ProductionConfig(Config):
         config('DB_ENGINE', default='mysql'),
         config('DB_USERNAME', default='pyrarcdev'),
         config('DB_PASS', default='dev2021api0322'),
-        config('DB_HOST', default='kube-db.mariadb-primary'),
+        config('DB_HOST', default='mariadb-primary.kube-db'),
         config('DB_PORT', default=3306),
         config('DB_NAME', default='amus')
     )
