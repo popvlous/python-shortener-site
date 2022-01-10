@@ -9,8 +9,8 @@
 		<meta content="" name="keywords" />
 
 		<!-- Favicons -->
-		<link href="/static/agora/img/favicon.ico" rel="icon" />
-		<link href="/static/agora/img/apple-touch-icon.ico" rel="apple-touch-icon" />
+		<link href="{{ url_for('base.static', filename='agora/img/favicon.ico') }}" rel="icon" />
+        <link href="{{ url_for('base.static', filename='agora/img/apple-touch-icon.ico') }}" rel="apple-touch-icon" />
 
 		<!-- Google Fonts -->
 		<link
@@ -19,25 +19,25 @@
 		/>
 
 		<!-- Vendor CSS Files -->
-		<link href="/static/assets/vendor/animate.css/animate.min.css" rel="stylesheet" />
-		<link href="/static/assets/vendor/aos/aos.css" rel="stylesheet" />
+		<link href="{{ url_for('base.static', filename='assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet" />
+		<link href="{{ url_for('base.static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet" />
 		<link
-			href="/static/assets/vendor/bootstrap/css/bootstrap.min.css"
+			href="{{ url_for('base.static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}"
 			rel="stylesheet"
 		/>
 		<link
-			href="/static/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+			href="{{ url_for('base.static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}"
 			rel="stylesheet"
 		/>
-		<link href="/static/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+		<link href="{{ url_for('base.static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
 		<link
-			href="/static/assets/vendor/glightbox/css/glightbox.min.css"
+			href="{{ url_for('base.static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}"
 			rel="stylesheet"
 		/>
-		<link href="/static/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+		<link href="{{ url_for('base.static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
 
 		<!-- Agora CSS Files -->
-		<link href="/static/agora/css/agora.css" rel="stylesheet" />
+		<link href="{{ url_for('base.static', filename='agora/css/agora.css') }}" rel="stylesheet" />
 	</head>
 
 	<body>
@@ -45,7 +45,7 @@
 		<header id="header" class="fixed-top d-flex align-items-center header-transparent">
 			<div class="container d-flex justify-content-between align-items-center">
 				<div class="logo">
-					<a href="index.html"><img src="/static/agora/img/logo.svg" alt="" class="img-fluid"/></a>
+					<a href="index.html"><img src="{{ url_for('base.static', filename='agora/img/logo.svg') }}" alt="" class="img-fluid"/></a>
 				</div>
 
 				<nav id="navbar" class="navbar">
@@ -144,16 +144,16 @@
 		<div class="cursor"></div>
 
 		<!-- Vendor JS Files -->
-		<script src="/static/assets/vendor/purecounter/purecounter.js"></script>
-		<script src="/static/assets/vendor/aos/aos.js"></script>
-		<script src="/static/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="/static/assets/vendor/glightbox/js/glightbox.min.js"></script>
-		<script src="/static/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-		<script src="/static/assets/vendor/swiper/swiper-bundle.min.js"></script>
-		<script src="/static/assets/vendor/waypoints/noframework.waypoints.js"></script>
-		<script src="/static/assets/vendor/php-email-form/validate.js"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/purecounter/purecounter.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/aos/aos.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
 
 		<!-- Agora Main JS File -->
-		<script src="/static/agora/js/main.js"></script>
+        <script src="{{ url_for('base.static', filename='agora/js/main.js') }}"></script>
 	</body>
 </html>

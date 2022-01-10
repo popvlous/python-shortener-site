@@ -3,15 +3,15 @@
         <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark">
             <div class="container position-relative">
                 <a class="navbar-brand me-lg-5" href="./index.html">
-                    <img class="navbar-brand-dark" src="/static/assets/img/brand/light.svg" alt="Logo light">
-                    <img class="navbar-brand-light" src="/static/assets/img/brand/dark.svg" alt="Logo dark">
+                    <img class="navbar-brand-dark" src="{{ url_for('base.static', filename='assets/img/brand/light.svg') }}" alt="Logo light">
+                    <img class="navbar-brand-light" src="{{ url_for('base.static', filename='assets/img/brand/dark.svg') }}" alt="Logo dark">
                 </a>
                 <div class="navbar-collapse collapse me-auto" id="navbar_global">
                     <div class="navbar-collapse-header">
                         <div class="row">
                             <div class="col-6 collapse-brand">
                                 <a href="./index.html">
-                                    <img src="/static/assets/img/brand/dark.svg" alt="Themesberg logo">
+                                    <img src="{{ url_for('base.static', filename='assets/img/brand/dark.svg') }}" alt="Themesberg logo">
                                 </a>
                             </div>
                             <div class="col-6 collapse-close">
@@ -69,7 +69,7 @@
                                 <div class="row g-0">
                                     <div class="col-lg-6 bg-dark d-none d-lg-block me-0 me-3">
                                         <div class="px-0 py-3 text-center">
-                                            <img src="/static/assets/img/megamenu_image.png" alt="Pixel Components">
+                                            <img src="{{ url_for('base.static', filename='assets/img/megamenu_image.png') }}" alt="Pixel Components">
                                         </div>
                                     </div>
                                     <div class="col ps-0 py-3">
