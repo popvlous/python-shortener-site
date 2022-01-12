@@ -84,6 +84,7 @@ def upload():
             #return redirect(url_for('mail.show', content=result['content'], email=result['email']))
             if result_json['code'] == 0:
                 data = result_json['data']
+                current_app.logger.info(f' 顯示解密文件於頁面  ')
                 return render_template('mail/show.html', content=str(data['mailbody']), attachment=data['attachment'])
             else:
                 message = "圖片驗證失敗,失敗原因：" + str(result_json['message']) + " code: " + str(result_json['code'])

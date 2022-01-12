@@ -141,7 +141,7 @@ def check_encrypt_dropzone(id, img_data):
     # for fileinfo in img_data:
     for index in range(len(img_data)):
         if index != (len(img_data) - 1):
-            if get_file_extension(img_data[index]) == ".jpg":
+            if get_file_extension(img_data[index]) != ".encrypt":
                 dataList.append(encode('--' + boundary))
                 dataList.append(
                     encode('Content-Disposition: form-data; name=image; filename={0}'.format(img_data[index])))
@@ -162,7 +162,7 @@ def check_encrypt_dropzone(id, img_data):
                 with open('app/base/static/temp/' + id + '/' + img_data[index], 'rb') as f:
                     dataList.append(f.read())
         else:
-            if get_file_extension(img_data[index]) == ".jpg":
+            if get_file_extension(img_data[index]) != ".encrypt":
                 dataList.append(encode('--' + boundary))
                 dataList.append(
                     encode('Content-Disposition: form-data; name=image; filename={0}'.format(img_data[index])))
