@@ -54,6 +54,6 @@ spec:
       imagePullSecrets:
       - name: regcred
       volumes:
-      - name: comsumer-pvc
+      - name: consumer-pvc
         persistentVolumeClaim:
           claimName: consumer-pv
