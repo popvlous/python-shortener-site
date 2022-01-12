@@ -214,4 +214,5 @@ dmypy.json
 cython_debug/
 
 logs
+app/base/static/temp/
 
