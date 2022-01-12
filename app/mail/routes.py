@@ -38,10 +38,14 @@ def upload():
             for key, f in request.files.items():
                 if key.startswith('file'):
                     f.save(os.path.join('app/base/static/temp/' + mail_id + '/', f.filename))
+                    current_app.logger.info(f' 圖片上傳至服務器 {f.filename} , file_location : app/base/static/temp/{mail_id}/ ')
             files_lists = os.listdir('app/base/static/temp/' + mail_id + '/')
             return render_template('mail/picupload.html', id=mail_id, file_lists=files_lists)
         else:
-            current_app.logger.error(f' 上傳以保存完成，進行解密作業 ')
+            files_lists = os.listdir('app/base/static/temp/' + mail_id + '/')
+            if files_lists:
+                files_lists_count = len(files_lists)
+            current_app.logger.info(f' 上傳以保存完成，進行解密作業 上傳檔案數量共 {files_lists_count} 個')
 
         # 将二进制转换成字符串
         #if type(data_json) == bytes:
@@ -71,7 +75,7 @@ def upload():
             current_app.logger.error(f' 圖片驗證失敗 { message } status: {status_code}  ')
             return render_template('page-500.html', message=message), int(status_code)
         else:
-            current_app.logger.error(f' 加密郵件id {mail_id} 驗證成功  ')
+            current_app.logger.info(f' 加密郵件id {mail_id} 驗證成功  ')
         #顯示解密結果
         if result_json:
             #return result
