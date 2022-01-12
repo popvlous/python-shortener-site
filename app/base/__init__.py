@@ -10,5 +10,5 @@ blueprint = Blueprint(
     __name__,
     url_prefix='/portal',
     template_folder='templates',
-    static_folder='static'
+    static_folder='portal/static'
 )
