@@ -48,5 +48,12 @@ spec:
           value: ite
         - name: FLASK_DEBUG
           value: "1"
+        volumeMounts:
+        - mountPath: /app/base/static/temp
+          name: consumer-pvc
       imagePullSecrets:
       - name: regcred
+      volumes:
+      - name: comsumer-pvc
+        persistentVolumeClaim:
+          claimName: consumer-pv

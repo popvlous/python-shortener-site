@@ -57,5 +57,5 @@ spec:
       volumes:
         - name: comsumer-pvc-ite
           persistentVolumeClaim:
-            claimName: consumer-pvc-ite
+            claimName: consumer-pv-ite
 
