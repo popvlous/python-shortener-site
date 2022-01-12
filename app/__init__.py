@@ -36,8 +36,9 @@ def configure_database(app):
     def shutdown_session(exception=None):
         db.session.remove()
 
+#修改CSS對應位置
 def create_app(config):
-    app = Flask(__name__, static_folder='base/static')
+    app = Flask(__name__, static_folder='base/static', static_url_path='/portal/static')
     app.config.from_object(config)
     register_extensions(app)
     register_blueprints(app)
