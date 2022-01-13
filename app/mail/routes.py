@@ -8,6 +8,7 @@ from datetime import time
 from io import BytesIO
 
 from flask import render_template, request, make_response, session, jsonify, redirect, url_for, current_app
+from flask_babel import gettext
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 
@@ -40,7 +41,8 @@ def upload():
                     f.save(os.path.join('app/base/static/temp/' + mail_id + '/', f.filename))
                     current_app.logger.info(f' 圖片上傳至服務器 {f.filename} , file_location : app/base/static/temp/{mail_id}/ ')
             files_lists = os.listdir('app/base/static/temp/' + mail_id + '/')
-            return render_template('mail/picupload.html', id=mail_id, file_lists=files_lists)
+            default_message = gettext(u'Drop files here to upload')
+            return render_template('mail/picupload.html', id=mail_id, file_lists=files_lists, default_message=default_message)
         else:
             files_lists = os.listdir('app/base/static/temp/' + mail_id + '/')
             files_lists_count = 0
@@ -104,7 +106,8 @@ def upload():
         if not mail_id:
             message = "URL遺失id參數"
             return render_template('page-500.html', message=message), 500
-        return render_template('mail/picupload.html', id=mail_id)
+        default_message = gettext(u'Drop files here to upload')
+        return render_template('mail/picupload.html', id=mail_id, default_message=default_message)
     return render_template('page-500.html', message=message), 500
 
 

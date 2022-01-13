@@ -50,6 +50,12 @@ class Config(object):
     MAIL_USERNAME = 'popvlous007@gmail.com'
     MAIL_PASSWORD = 'Foxconn@890'
 
+    #多語系設定
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'
+    SUPPORTED_LANGUAGES = ['zh_TW', 'en']
+    DEFAULT_LANGUAGE = 'en'
+
 
 class DevelopmentConfig(Config):
     """
@@ -96,6 +102,13 @@ class DevelopmentConfig(Config):
     MAIL_USERNAME = 'popvlous007@gmail.com'
     MAIL_PASSWORD = 'Foxconn@890'
 
+    #多語系設定
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'
+    SUPPORTED_LANGUAGES = ['zh_TW', 'en']
+    DEFAULT_LANGUAGE = 'en'
+
+
 
 class ITEConfig(Config):
     DEBUG = 1
@@ -139,6 +152,12 @@ class ITEConfig(Config):
     MAIL_USERNAME = 'popvlous007@gmail.com'
     MAIL_PASSWORD = 'Foxconn@890'
 
+    #多語系設定
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'
+    SUPPORTED_LANGUAGES = ['zh_TW', 'en']
+    DEFAULT_LANGUAGE = 'en'
+
 
 class ProductionConfig(Config):
     DEBUG = 0
@@ -181,6 +200,12 @@ class ProductionConfig(Config):
     MAIL_MAX_EMAILS = 10
     MAIL_USERNAME = 'popvlous007@gmail.com'
     MAIL_PASSWORD = 'Foxconn@890'
+
+    #多語系設定
+    BABEL_DEFAULT_TIMEZONE = 'UTC'
+    BABEL_TRANSLATION_DIRECTORIES = 'translations'
+    SUPPORTED_LANGUAGES = ['zh_TW', 'en']
+    DEFAULT_LANGUAGE = 'en'
 
 
 class DebugConfig(Config):

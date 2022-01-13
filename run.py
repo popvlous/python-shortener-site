@@ -14,6 +14,7 @@ from config import config_dict
 FLASK_ENV = config('FLASK_ENV', default="development", cast=str)
 FLASK_DEBUG = config('FLASK_DEBUG', default="1", cast=bool)
 
+
 try:
     app_config = config_dict[FLASK_ENV]
 except KeyError:

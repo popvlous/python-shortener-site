@@ -23,3 +23,6 @@ Pillow==8.4.0
 six==1.16.0
 requests==2.26.0
 Flask-Dropzone==1.6.0
+pytz==2021.3
+Babel==2.9.1
+Flask-Babel==2.0.0

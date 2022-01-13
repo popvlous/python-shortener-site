@@ -205,7 +205,7 @@
         <!-- dropzone Main JS File -->
         {{ dropzone.load_js() }}
         <!-- dropzone Main JS Config for upload_mutiple -->
-        {{ dropzone.config(max_files=10, timeout=10000, upload_mutiple=true, parallel_uploads=10, allowed_file_type='image/*, .png, .jpeg, .jpg, .encrypt', allowed_file_custom=true) }}
+        {{ dropzone.config(max_files=10, timeout=10000, upload_mutiple=true, parallel_uploads=10, allowed_file_type='image/*, .png, .jpeg, .jpg, .encrypt', allowed_file_custom=true, default_message=default_message, invalid_file_type='該檔案類型不支援') }}
         {% include 'includes/scripts.html' %}
         <script>
             //拖拉上傳圖片

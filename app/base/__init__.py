@@ -8,7 +8,8 @@ from flask import Blueprint
 blueprint = Blueprint(
     'base',
     __name__,
-    url_prefix='/portal',
+    url_prefix='/portal/<lang_code>',
+    #url_prefix='/portal',
     template_folder='templates',
-    static_folder='portal/static'
+    static_folder='portal/<lang_code>/static'
 )

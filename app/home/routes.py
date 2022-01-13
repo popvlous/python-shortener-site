@@ -1,6 +1,7 @@
 from io import BytesIO
 
 from flask import render_template, request, make_response, session, jsonify, redirect, url_for, current_app
+from flask_babel import gettext
 from flask_login import login_required
 from jinja2 import TemplateNotFound
 
@@ -14,6 +15,7 @@ from app.util.util import full2half
 @blueprint.route('/<template>')
 def route_template(template):
     try:
+        message = gettext(u'Hello World!')
 
         if not template.endswith('.html'):
             template += '.html'
