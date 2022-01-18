@@ -106,10 +106,14 @@ def upload():
         if not mail_id:
             message = "URL遺失id參數"
             return render_template('page-500.html', message=message), 500
-        default_message = gettext(u'Drop files here to upload')
-        return render_template('mail/picupload.html', id=mail_id, default_message=default_message)
-    return render_template('page-500.html', message=message), 500
 
+        # 利用重導向切換語言
+        current_language = request.accept_languages.best
+        session['language'] = current_language
+        return redirect(request.host_url + "portal/" + current_language +"/mail/uploadfile?id=" + mail_id)
+        # return render_template('mail/picupload.html', id=mail_id, default_message=default_message)
+        #return redirect(url_for('mail.lan', id=mail_id))
+    return render_template('page-500.html', message=message), 500
 
 
 @blueprint.route('/mail/show', methods=['POST', 'GET'])
@@ -117,4 +121,58 @@ def show():
     content = request.args['content']
     email = request.args['email']
     return render_template('mail/show.html', email=email, content=content)
+
+
+@blueprint.route('/mail/uploadfile', methods=['POST', 'GET'])
+def lan():
+    if request.method == 'POST':
+        mail_id = request.args.get('id')
+        if not os.path.isdir('app/base/static/temp/' + mail_id):
+            os.makedirs('app/base/static/temp/' + mail_id)
+        if not request.form.get("check_mail"):
+            for key, f in request.files.items():
+                if key.startswith('file'):
+                    f.save(os.path.join('app/base/static/temp/' + mail_id + '/', f.filename))
+                    current_app.logger.info(f' 圖片上傳至服務器 {f.filename} , file_location : app/base/static/temp/{mail_id}/ ')
+            files_lists = os.listdir('app/base/static/temp/' + mail_id + '/')
+            default_message = gettext(u'Drop files here to upload')
+            return render_template('mail/picupload.html', id=mail_id, file_lists=files_lists, default_message=default_message)
+        else:
+            files_lists = os.listdir('app/base/static/temp/' + mail_id + '/')
+            files_lists_count = 0
+            if files_lists:
+                files_lists_count = len(files_lists)
+            current_app.logger.info(f' 上傳以保存完成，進行解密作業 上傳檔案數量共 {str(files_lists_count)} 個')
+
+        #驗證圖片
+        files_list = os.listdir('app/base/static/temp/' + mail_id + '/')
+        result = check_encrypt_dropzone(mail_id, files_list)
+        result_json = json.loads(result)
+
+        #判斷驗證結果
+        if result_json.get('status'):
+            message = "圖片驗證失敗 原因:" + result_json['error']
+            status_code = result_json['status']
+            current_app.logger.error(f' 圖片驗證失敗 { message } status: {status_code}  ')
+            return render_template('page-500.html', message=message), int(status_code)
+        else:
+            current_app.logger.info(f' 加密郵件id {mail_id} 驗證成功  ')
+        #顯示解密結果
+        if result_json:
+            if result_json['code'] == 0:
+                data = result_json['data']
+                current_app.logger.info(f' 顯示解密文件於頁面  ')
+                return render_template('mail/show.html', content=str(data['mailbody']), attachment=data['attachment'])
+            else:
+                message = "圖片驗證失敗,失敗原因：" + str(result_json['message']) + " code: " + str(result_json['code'])
+                current_app.logger.error(f' 圖片驗證失敗 {message} ')
+                return render_template('page-500.html', message=message), 500
+        else:
+            message = "圖片驗證失敗"
+            current_app.logger.error(f' 圖片驗證失敗 {message} ')
+            return render_template('page-500.html', message=message), 500
+    else:
+        default_message = gettext(u'Drop files here to upload')
+    mail_id = request.args.get('id')
+    return render_template('mail/picupload.html', id=mail_id, default_message=default_message)
 
