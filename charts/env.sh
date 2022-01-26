@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export tag="0.0.14"
+export tag="0.0.15"
 export replicas=2
 export PORTS=5005
 # git專案目錄為
