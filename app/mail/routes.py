@@ -180,7 +180,11 @@ def lan():
 @blueprint.route('/mail/reload', methods=['POST', 'GET'])
 def reload():
     mail_id = request.args.get('mail_id')
+    if not mail_id:
+        message = '郵件id遺失，請重新上傳'
+        render_template('mail/mail500.html', message=message, mail_id=mail_id)
     current_language = request.accept_languages.best
     session['language'] = current_language
+    current_app.logger.error(f' 解密郵件頁面重新載入 ')
     return redirect(request.host_url + "portal/" + current_language +"/mail/uploadfile?id=" + mail_id)
 
