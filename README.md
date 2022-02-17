@@ -1,40 +1,47 @@
-# Project Title
-
-One Paragraph of project description goes here
+# python-ams-comsumer
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Agoramail 官網
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Flask==2.0.1
+Flask_Mail==0.9.1
+Flask_WTF==0.15.1
+Flask_Moment==1.0.2
+Jinja2==3.0.1
+pymongo==3.12.0
+mongoengine==0.23.1
+openpyxl==3.0.9
+Flask_Migrate==3.1.0
+requests==2.26.0
+urllib3==1.26.7
+flask_mongoengine==1.0.0
+Flask_Login==0.5.0
+WTForms==2.3.3
+itsdangerous==2.0.1
+python-decouple==3.4
+gunicorn==20.1.0
+qrcode==7.3.1
+PyJWT==2.3.0
+PyMySQL==1.0.2
+qrcode==7.3.1
+Pillow==8.4.0
+six==1.16.0
+requests==2.26.0
+Flask-Dropzone==1.6.0
+pytz==2021.3
+Babel==2.9.1
+Flask-Babel==2.0.0
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
+flask run 
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+flask run
 
 ### Break down into end to end tests
 
@@ -54,27 +61,24 @@ Give an example
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+deploy the project by k8s
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Flask] - The web framework used
+
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+fred
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+0.1.44
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **fred yang** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
 
 ## License
 
