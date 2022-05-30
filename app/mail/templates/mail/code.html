@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
+		<title>Agora Mail - Decrypt Mail</title>
+		<meta content="" name="description" />
+		<meta content="" name="keywords" />
+
+		<!-- Favicons -->
+		<link href="{{ url_for('base.static', filename='agora/img/favicon.ico') }}" rel="icon" />
+        <link href="{{ url_for('base.static', filename='agora/img/apple-touch-icon.ico') }}" rel="apple-touch-icon" />
+
+		<!-- Google Fonts -->
+		<link
+			href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Vendor CSS Files -->
+		<link href="{{ url_for('base.static', filename='assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet" />
+		<link href="{{ url_for('base.static', filename='assets/vendor/aos/aos.css') }}" rel="stylesheet" />
+		<link
+			href="{{ url_for('base.static', filename='assets/vendor/bootstrap/css/bootstrap.min.css') }}"
+			rel="stylesheet"
+		/>
+		<link
+			href="{{ url_for('base.static', filename='assets/vendor/bootstrap-icons/bootstrap-icons.css') }}"
+			rel="stylesheet"
+		/>
+		<link href="{{ url_for('base.static', filename='assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
+		<link
+			href="{{ url_for('base.static', filename='assets/vendor/glightbox/css/glightbox.min.css') }}"
+			rel="stylesheet"
+		/>
+		<link href="{{ url_for('base.static', filename='assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet" />
+
+		<!-- Agora CSS Files -->
+		<link href="{{ url_for('base.static', filename='agora/css/agora.css') }}" rel="stylesheet" />
+        {{ dropzone.load_css() }}
+        {{ dropzone.style('border: 2px dashed #0087F7; margin: 10%') }}
+	</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center ">
+    <div class="container d-flex justify-content-between align-items-center">
+
+				<div class="logo">
+					<a href="../index.html"><img src="{{ url_for('base.static', filename='agora/img/logo.svg') }}" alt="" class="img-fluid"/></a>
+				</div>
+
+				<nav id="navbar" class="navbar">
+					<ul>
+						<li><a class="active" data-hover="Home" href="../index.html"><span>Home</span></a></li>
+						<li><a data-hover="About" href="../about.html"><span>About</span></a></li>
+						<li><a data-hover="Products" href="../products.html"><span>Products</span></a></li>
+						<li><a data-hover="Contact" href="../contact.html"><span>Contact</span></a></li>
+					</ul>
+					<i class="bi bi-list mobile-nav-toggle"></i>
+				</nav>
+      <!-- .navbar -->
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <main id="main">
+
+    <!-- ======= Products Section ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Decrypted Mail</h2>
+          <ol>
+            <li><a href="../index.html"><span>Home</span></a></li>
+            <li>Decrypted Mail</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Products Section -->
+
+    <!-- ======= Products Section ======= -->
+
+
+    <!-- ======= Pricing Section ======= -->
+    <section class="pricing section-bg" data-aos="fade-up">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Agora外寄郵件顯示</h2>
+        <form method="post" action="{{ url_for('mail.code', id=id, token=token) }}" class="mt-4">
+                       <div class="form-group mt-3">
+               <p>驗證碼</p>
+               <table id="TableMenuList" class="table table-bordered table-striped">
+                   <tbody style="text-align: left;background: white">
+                   <tr><input type="text" class="form-control" name="mail_code" id="mail_code" placeholder="驗證碼輸入" value={{ token }}
+                                   required>
+                   </tr>
+                   </tbody>
+                </table>
+            </div>
+            <div class="form-group mt-3">
+{#                <div><a href="{{ url_for('mail.code', id=mail_id) }}" class="get-started-btn"><span>確定</span></a></div>#}
+                 <div><button type="submit" name="ok" class="btn btn-primary">確定</button><div>
+            </div>
+            <div class="form-group mt-3">
+                <p>解密附件</p>
+                    <table id="TableMenuList" class="table table-bordered table-striped">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+            </div>
+        </form>
+        <div class="row no-gutters">
+
+          <div class="col-lg-4 box">
+            <h3>Free</h3>
+            <h4>$0<span>per month</span></h4>
+            <ul>
+              <li><i class="bx bx-check"></i> 10 GB 電子郵件儲存空間 </li>
+              <li><i class="bx bx-check"></i> 電子郵件備份和恢復 </li>
+              <li><i class="bx bx-check"></i> 250M的巨大附件</li>
+              <li><i class="bx bx-check"></i> 可寄送250M的大附件</li>
+              <li><i class="bx bx-check"></i> 資料安全性和垃圾郵件篩選</li>
+              <li><i class="bx bx-check"></i> 完整文字搜尋功能</li>
+              <li><i class="bx bx-check"></i> 適用於 iOS 和 Android 的移動應用功能</li>
+              <li class="na"><i class="bx bx-x"></i> <span>郵件加密功能</span></li>
+              <li class="na"><i class="bx bx-x"></i> <span>和您的網域相同的email</span></li>
+            </ul>
+            <a href="#" class="get-started-btn"><span>立即註冊</span></a>
+          </div>
+
+          <div class="col-lg-4 box featured">
+            <h3>Business</h3>
+            <h4>$2900<span>per month</span></h4>
+            <ul>
+              <li><i class="bx bx-check"></i> 30 GB 電子郵件儲存空間 </li>
+              <li><i class="bx bx-check"></i> 電子郵件備份和恢復 </li>
+              <li><i class="bx bx-check"></i> 郵件加密功能</li>
+              <li><i class="bx bx-check"></i> 高達1G的巨大附件</li>
+              <li><i class="bx bx-check"></i> 資料安全性和垃圾郵件篩選</li>
+              <li><i class="bx bx-check"></i> 完整文字搜尋功能</li>
+              <li><i class="bx bx-check"></i> 適用於 iOS 和 Android 的移動應用功能</li>
+              <li><i class="bx bx-check"></i> 為您的團隊成員指派工作</li>
+              <li><i class="bx bx-check"></i> 可和您喜愛的 email 應用程式搭配使用</li>
+            </ul>
+            <a href="#" class="get-started-btn"><span>立即選購</span></a>
+          </div>
+
+          <div class="col-lg-4 box">
+            <h3>Developer</h3>
+            <h4>$4900<span>per month</span></h4>
+            <ul>
+              <li><i class="bx bx-check"></i> 30 GB 電子郵件儲存空間 </li>
+              <li><i class="bx bx-check"></i> 電子郵件備份和恢復 </li>
+              <li><i class="bx bx-check"></i> 郵件加密功能</li>
+              <li><i class="bx bx-check"></i> 高達1G的巨大附件</li>
+              <li><i class="bx bx-check"></i> 資料安全性和垃圾郵件篩選</li>
+              <li><i class="bx bx-check"></i> 完整文字搜尋功能</li>
+              <li><i class="bx bx-check"></i> 適用於 iOS 和 Android 的移動應用功能</li>
+            </ul>
+            <a href="#" class="get-started-btn"><span>立即選購</span></a>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+  </main><!-- End #main -->
+
+
+		<!-- ======= Footer ======= -->
+		<footer id="footer" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-9 col-md-12 footer-contact">
+						<h4>Contact </h4>
+						<p>臺北市北投區行義路170巷5之1號2樓</p>
+						<p><strong>Phone：</strong> +1 5589 55488 55</p>
+						<p><strong>Email：</strong> info@example.com</p>
+					</div>
+					<div class="col-lg-3 col-md-12 copyright">
+						Copyright &copy; <strong><span>Agora Mail</span></strong>. All Rights Reserved
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- End Footer -->
+
+		<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><span>top</span></a>
+
+		<div class="cursor"></div>
+
+		<!-- Vendor JS Files -->
+        <script src="{{ url_for('base.static', filename='assets/vendor/purecounter/purecounter.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/aos/aos.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+        <script src="{{ url_for('base.static', filename='assets/vendor/php-email-form/validate.js') }}"></script>
+
+		<!-- Agora Main JS File -->
+        <script src="{{ url_for('base.static', filename='agora/js/main.js') }}"></script>
+        <!-- dropzone Main JS File -->
+        {{ dropzone.load_js() }}
+        <!-- dropzone Main JS Config for upload_mutiple -->
+        {{ dropzone.config(max_files=10, timeout=10000, upload_mutiple=true, parallel_uploads=10, allowed_file_type='image/*, .png, .jpeg, .jpg, .encrypt', allowed_file_custom=true, default_message=default_message, invalid_file_type='該檔案類型不支援') }}
+        {% include 'includes/scripts.html' %}
+        <script>
+            //拖拉上傳圖片
+{#            window.onload = function(){
+              var oDiv  = document.getElementById('div1');
+              var oUl  = document.getElementById('ul1');
+              var xhr;
+              if(window.XMLHttpRequest){
+                xhr = new XMLHttpRequest();
+              }else{
+                xhr = new ActiveXObject("Microsoft.XMLHttp")
+              }
+
+              document.ondragover = function(ev){ ev.preventDefault() } // 阻止文件拖拽到oDiv以外的地方会打开文件
+              document.ondrop = function(ev){ ev.preventDefault() }     // 阻止文件拖拽到oDiv以外的地方会打开文件
+
+              oDiv.ondragenter = function(ev){
+                this.innerHTML = '釋放鼠標案件，上傳資料';
+              }
+              oDiv.ondragleave = function(ev){
+                this.innerHTML = '請將加密文件拖拉到此處';
+              }
+              oDiv.ondragover = function(ev){
+                ev.preventDefault()
+              }
+              oDiv.ondrop = function(ev){    // 想要出发 ondrop 事件，必须在 ondragover 阻止默认事件
+                this.style.background = 'pink'
+                ev.preventDefault();         // 阻止默认事件：浏览器打开文件
+
+                var fs = ev.dataTransfer.files;
+                var fd = new FileReader();   // 对象允许Web应用程序异步读取存储在用户计算机上的文件
+                fd.readAsDataURL(fs[0]);     // 读取文件, 读取成功触发 onload 函数。
+
+                fd.onload = function(){      // 读取文件成功后将文件展示到页面
+                  var oLi = document.createElement('li');
+                  var oImg = document.createElement('img');
+                  oImg.src = this.result;
+                  oLi.appendChild(oImg);
+                  oUl.appendChild(oLi);
+                    //先取得網址字串，假設此頁網址為「index.aspx?id=U001&name=GQSM」
+                    var url = location.href;
+
+                    //再來用去尋找網址列中是否有資料傳遞(QueryString)
+                    if(url.indexOf('?')!=-1)
+                    {
+                        var id = "";
+                        //在此直接將各自的參數資料切割放進ary中
+                        var ary = url.split('?')[1].split('&');
+                        //此時ary的內容為：
+                        //ary[0] = 'id=U001'，ary[1] = 'name=GQSM'
+
+                        //下迴圈去搜尋每個資料參數
+                        for(i=0;i<=ary.length-1;i++)
+                        {
+                            //如果資料名稱為id的話那就把他取出來
+                            if(ary[i].split('=')[0] == 'id')
+                                id = ary[i].split('=')[1];
+                        }
+
+                    }
+                    $.ajax({
+                        url:'/portal/mail/upload',
+                        type:'POST',
+                        data:JSON.stringify({ img:this.result, id:id }),
+                        dataType: 'json',
+                        success:function(res){
+                            console.log(res)
+                            console.log(0)
+                            location.href = "http://127.0.0.1:5000/portal/mail/show?content=" + res.content + "&email=" + res.email
+                        },
+                        error:function (res) {
+                            console.log(res);
+                            console.log(1)
+                        }
+                    })
+                  #}{#xhr.onreadystatechange = function(){
+                    if(xhr.status == 200 && xhr.readyState == 4){
+                      //
+                    }
+                  }
+                  xhr.open('POST','/portal/mail/upload')
+                  xhr.send( JSON.stringify({ img:this.result, id:id }) )  // 上传的是 base64 格式的二进制码#}{#
+                }
+              }
+            }#}
+          </script>
+	</body>
+</html>
