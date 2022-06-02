@@ -141,7 +141,10 @@ def code():
         mail_attachment = data['attachment']
         mail_sendDate = data['sendDate']
         mail_subject = data['subject']
-        mail_plain = data['plain']
+        if data['html']:
+            mail_plain = data['html']
+        else:
+            mail_plain = data['plain']
         mail_from = data['from']['address']
         mail_to = list_to_string(data['to'])[1:]
         return render_template('mail/outgoing.html', id=mail_id, token=mail_token, mail_cc=mail_cc, mail_attachment=mail_attachment,
