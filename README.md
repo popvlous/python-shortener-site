@@ -1,8 +1,8 @@
-# python-ams-comsumer
+# python-shortener-site
 
 ## Getting Started
 
-Agoramail 官網
+PSS 短網址轉址網站
 
 ### Prerequisites
 

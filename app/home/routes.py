@@ -35,7 +35,6 @@ def route_template(template):
 
 
 @blueprint.route('/index')
-@login_required
 def index():
     return render_template('/index.html')
 

@@ -23,7 +23,7 @@ from app.util.util import verify_pass, hash_pass
 
 @blueprint.route('/')
 def route_default():
-    return redirect(url_for('base.login'))
+    return redirect(url_for('home.index'))
 
 
 @blueprint.route('/logout')
